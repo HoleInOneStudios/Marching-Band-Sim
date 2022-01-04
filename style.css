@@ -1,4 +1,4 @@
-#mainCanvasDiv > canvas {
+#mainCanvas {
     border-radius: 1rem;
-    border: solid black 2px;
+    border: solid 2px black;
 }

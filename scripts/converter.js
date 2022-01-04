@@ -1,9 +1,9 @@
 const converter = {
-    toCoords: function(d){
+    drillToCoords: function(d){
 
     },
 
-    toDrill: function({x, y}){
+    coordsToDrill: function({x, y}){
         
     }
 }

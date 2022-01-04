@@ -12,6 +12,7 @@ function setup() {
 
     c = createCanvas(Field.width * scale, Field.height * scale); // Create the canvas
     c.parent(document.getElementById("mainCanvasDiv")); // Assign the canvas to be in the mainCanvasDiv div
+    c.id('mainCanvas');
 
     c.translate(width/2, height/2) // Move origin to center
 }

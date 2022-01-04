@@ -7,11 +7,14 @@ const Field = {
         bg: 'rgb(50, 150, 50)',
         lnCol: 'rgb(255, 255, 255)',
         ydln10w: 4,
-        ydln5w: 1,
+        ydln5w: 2,
         hlnw: 3,
         fontSize: 5
     },
 
+    /**
+     * Draw the markings on the field
+     */
     draw: function () {
         background(this.style.bg); // Fill background
 
