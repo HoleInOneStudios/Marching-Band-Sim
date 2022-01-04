@@ -27,4 +27,5 @@ function draw() {
 
     Field.draw(); // Draw field
 
+    noLoop();
 }
