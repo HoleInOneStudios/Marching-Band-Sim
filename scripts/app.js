@@ -1,7 +1,7 @@
 /// <reference path="../libraries/TS/p5.global-mode.d.ts" />
 
 let c; //Canvas element variable
-let tf;
+let stack = []
 
 let y_offset = 0;
 let x_offset = 0;
@@ -22,7 +22,7 @@ function setup() {
     console.log(converter.drillToCoords());
     //console.log(converter.coordsToDrill(converter.drillToCoords()));
 
-    tf = new FieldObject();
+    stack.push(new FieldObject(["S1-Y45-I0-H1-J0", "S1-Y50-I0-H2-J0"]), new FieldObject(["S2-Y45-I0-H1-J0", "S1-Y45-I0-H1-J0"]));
 }
 
 function windowResized() {
@@ -36,8 +36,10 @@ function draw() {
 
     Field.draw(); // Draw field
 
-    tf.move();
-    tf.show();
+    stack.forEach(element => {
+        element.move();
+        element.show();
+    });
 
     lerpNum = (lerpNum + .02) % 1;
 }
