@@ -6,7 +6,11 @@ let maxSet = 0;
 let currentSet = 0;
 let nextSet = 1;
 let lerpNum = 0.0;
+
+let speedSlider;
 let speed = 0.02;
+
+let infoP;
 
 let y_offset = 0;
 let x_offset = 0;
@@ -25,6 +29,9 @@ function setup() {
     //console.log(converter.coordsToDrill(converter.drillToCoords()));
 
     stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"]), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"]));
+
+    speedSlider = createSlider(0, .10, speed, .01);
+    infoP = createP();
 }
 
 function windowResized() {
@@ -34,6 +41,10 @@ function windowResized() {
 }
 
 function draw() {
+    speed = speedSlider.value();
+
+    infoP.html(`${currentSet} <br> ${nextSet} <br> ${speed} <br>`);
+
     c.translate(width/2, height/2) //Update Origin to Center
 
     Field.draw(); // Draw field
