@@ -1,16 +1,16 @@
 /// <reference path="../libraries/TS/p5.global-mode.d.ts" />
 
 let c; //Canvas element variable
-let stack = [];
+let stack = []; //Array of objects
 let maxSet = 0;
-
-let y_offset = 0;
-let x_offset = 0;
-let scale = 8; // Scale that dynamically updates
 let currentSet = 0;
 let nextSet = 1;
 let lerpNum = 0.0;
 let speed = 0.02;
+
+let y_offset = 0;
+let x_offset = 0;
+let scale = 8;
 
 function setup() {
     scale = window.innerWidth / Field.width * .9; //Set to 9 / 10 of the screen width to dynamically adjust field scale
@@ -38,23 +38,23 @@ function draw() {
 
     Field.draw(); // Draw field
 
-    stack.forEach(element => {
+    stack.forEach(element => { 
         if (element.sets.length - 1 > maxSet){
             maxSet = element.sets.length - 1;
         }
         element.move();
         element.show();
-    });
+    }); //Render and simulate loop
 
     
-    lerpNum = (lerpNum + speed) % (1 + speed);
+    lerpNum = (lerpNum + speed) % (1 + speed); //Iterate step in animation
 
     if ( lerpNum >= 1){
         currentSet = nextSet;
         nextSet = (nextSet + 1) % maxSet;
 
         //console.log(currentSet, nextSet);
-    }
+    } //interate set when lerp is above 1
 
     
 }
