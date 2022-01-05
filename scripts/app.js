@@ -28,10 +28,9 @@ function setup() {
     //console.log(converter.drillToCoords());
     //console.log(converter.coordsToDrill(converter.drillToCoords()));
 
-    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"]), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"]));
+    select('main').remove(); // delete unused main element
 
-    speedSlider = createSlider(0, .10, speed, .01);
-    infoP = createP();
+    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"]), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"]));
 }
 
 function windowResized() {
@@ -41,10 +40,6 @@ function windowResized() {
 }
 
 function draw() {
-    speed = speedSlider.value();
-
-    infoP.html(`${currentSet} <br> ${nextSet} <br> ${speed} <br>`);
-
     c.translate(width/2, height/2) //Update Origin to Center
 
     Field.draw(); // Draw field
