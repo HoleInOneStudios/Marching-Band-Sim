@@ -1,2 +1,1 @@
-# Marching-Band-Sim
- 
+# MBS-Web (Marching Band Sim Web Edition)

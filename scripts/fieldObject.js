@@ -1,9 +1,9 @@
 class FieldObject {
     position = createVector();
-    sets = ["S1-Y50-I0-H1-J0", "S1-Y50-I0-H2-J0"];
+    sets = ["S1-Y50-I0-H1-J0"];
     
     constructor(sets = this.sets){
-        this.sets = sets;
+        this.sets.push(...sets);
 
         this.show = function() {
             ellipse(this.position.x, this.position.y, 10);
