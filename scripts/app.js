@@ -19,7 +19,7 @@ function setup() {
 
     c.translate(width/2, height/2) // Move origin to center
 
-    console.log(converter.drillToCoords());
+    //console.log(converter.drillToCoords());
     //console.log(converter.coordsToDrill(converter.drillToCoords()));
 
     stack.push(new FieldObject(["S1-Y45-I0-H1-J0", "S1-Y50-I0-H2-J0"]), new FieldObject(["S2-Y45-I0-H1-J0", "S1-Y45-I0-H1-J0"]));
@@ -41,5 +41,5 @@ function draw() {
         element.show();
     });
 
-    lerpNum = (lerpNum + .02) % 1;
+    lerpNum = (lerpNum + .02) % 1.1;
 }
