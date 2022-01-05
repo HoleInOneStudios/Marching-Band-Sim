@@ -1,12 +1,15 @@
 class FieldObject {
     position = createVector();
+    color = 'rgb(255, 0, 0)'
     sets = ["S1-Y50-I0-H1-J0"];
     
-    constructor(sets = this.sets){
+    constructor(sets = this.sets, color = this.color){
         this.sets.push(...sets);
+        this.color = color;
 
         this.show = function() {
-            ellipse(this.position.x, this.position.y, 10);
+            fill(this.color);
+            ellipse(this.position.x, this.position.y, 1.5 * scale);
         }
 
         this.move = function(){

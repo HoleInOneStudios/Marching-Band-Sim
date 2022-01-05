@@ -6,11 +6,7 @@ let maxSet = 0;
 let currentSet = 0;
 let nextSet = 1;
 let lerpNum = 0.0;
-
-let speedSlider;
 let speed = 0.02;
-
-let infoP;
 
 let y_offset = 0;
 let x_offset = 0;
@@ -30,7 +26,7 @@ function setup() {
 
     select('main').remove(); // delete unused main element
 
-    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"]), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"]));
+    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], 'rgb(0, 0, 255)'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"]));
 }
 
 function windowResized() {
