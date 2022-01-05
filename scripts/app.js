@@ -1,10 +1,13 @@
 /// <reference path="../libraries/TS/p5.global-mode.d.ts" />
 
 let c; //Canvas element variable
+let tf;
 
 let y_offset = 0;
 let x_offset = 0;
 let scale = 8; // Scale that dynamically updates
+let currentSet = 0;
+let nextSet = 1;
 let lerpNum = 0.0;
 
 function setup() {
@@ -15,6 +18,11 @@ function setup() {
     c.id('mainCanvas');
 
     c.translate(width/2, height/2) // Move origin to center
+
+    console.log(converter.drillToCoords());
+    //console.log(converter.coordsToDrill(converter.drillToCoords()));
+
+    tf = new FieldObject();
 }
 
 function windowResized() {
@@ -28,5 +36,8 @@ function draw() {
 
     Field.draw(); // Draw field
 
-    noLoop();
+    tf.move();
+    tf.show();
+
+    lerpNum = (lerpNum + .02) % 1;
 }
