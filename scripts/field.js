@@ -60,3 +60,13 @@ const Field = {
 
     }
 }
+
+function GoToNextSet() {
+    currentSet = nextSet;
+    nextSet = (currentSet + 1) % maxSet;
+}
+
+function GoToPreviousSet() {
+    currentSet = maxSet - (currentSet + nextSet);
+    nextSet = (currentSet + 1) % maxSet;
+}

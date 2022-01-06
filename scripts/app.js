@@ -83,10 +83,8 @@ function draw() {
 
     if (move) {
         if (lerpNum >= 1) {
-            currentSet = nextSet;
-            nextSet = (nextSet + 1) % maxSet;
+            GoToNextSet();
 
-            //console.log(currentSet, nextSet);
         } //interate set when lerp is above 1
     }
     else {
