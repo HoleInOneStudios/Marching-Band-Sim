@@ -1,4 +1,13 @@
-
+/**
+ * Converts the 
+ * @param {string} d - String version of drill @default "S1-Y50-I0-H1-J0"
+ * - S => side
+ * - Y => Yardline
+ * - I => Offset from yardline
+ * - H => hash
+ * - J => Offset from hash 
+ * @returns {p5.Vector} scaled coordinates to on the field
+ */
 function drillToCoords(d = "S1-Y50-I0-H1-J0") {
     //init variables
     let X, Y;
@@ -12,8 +21,8 @@ function drillToCoords(d = "S1-Y50-I0-H1-J0") {
     h = parseFloat(d.substring(d.indexOf('H') + 1, d.indexOf('-J'))); //get the hash value from the param d
     j = parseFloat(d.substring(d.indexOf('J') + 1)); //get the y offset value from the param d
 
-    X = (Field.width / 2 * Math.cos(Math.PI * s) - (y / 10 * Field.width / 10 * Math.cos(Math.PI * s) + i)) + x_offset; //Calculate X
-    Y = (Math.cos(Math.PI * h) * (Field.hash_Distance / 2) + Math.cos(Math.PI * h) * j) + y_offset; //Calculate Y
+    X = (fieldSettings["width"] / 2 * Math.cos(Math.PI * s) - (y / 10 * fieldSettings["width"] / 10 * Math.cos(Math.PI * s) + i)) + x_offset; //Calculate X
+    Y = (Math.cos(Math.PI * h) * (fieldSettings["hash_distance"] / 2) + Math.cos(Math.PI * h) * j) + y_offset; //Calculate Y
 
     //console.log(s, y, i, h, j);
 

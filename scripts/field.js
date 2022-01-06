@@ -1,54 +1,56 @@
+let fieldSettings = {
+    "width": 100,
+    "height": 160 / 3,
+    "hash_distance": 40 / 3
+}
+
+//Styles of field for easy modification in the program
+let fieldStyle = {
+    "bg": 'rgb(50, 150, 50)',
+    "lnCol": 'rgb(255, 255, 255)',
+    "ydln10w": 4,
+    "ydln5w": 2,
+    "hlnw": 3,
+    "fontSize": 5
+}
+
 const Field = {
-    width: 100,
-    height: 160 / 3,
-    hash_Distance: 40 / 3,
-
-    //Styles of field for easy modification in the program
-    style: {
-        bg: 'rgb(50, 150, 50)',
-        lnCol: 'rgb(255, 255, 255)',
-        ydln10w: 4,
-        ydln5w: 2,
-        hlnw: 3,
-        fontSize: 5
-    },
-
     draw: function () {
-        background(this.style.bg); // Fill background
+        background(fieldStyle["bg"]); // Fill background
 
         //Draw yard lines and text
-        stroke(this.style.lnCol);
+        stroke(fieldStyle["lnCol"]);
         fill(255, 255, 255);
-        textSize(this.style.fontSize * scale);
+        textSize(fieldStyle["fontSize"] * scale);
 
         for (let i = -45; i < 50; i += 5) {
             switch (Math.abs(i % 10)) {
                 case 0:
-                    strokeWeight(this.style.ydln10w);
+                    strokeWeight(fieldStyle["ydln10w"]);
                     if (i < 0) {
-                        text(Math.abs(i + 50), (i / 10 * this.width / 10 - this.style.fontSize / 2) * scale, (this.height - this.style.fontSize) * scale / 2);
-                        text(Math.abs(i + 50), (i / 10 * this.width / 10 - this.style.fontSize / 2) * scale, (this.style.fontSize * 2.5 - this.height) * scale / 2);
+                        text(Math.abs(i + 50), (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldSettings["height"] - fieldStyle["fontSize"]) * scale / 2);
+                        text(Math.abs(i + 50), (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldStyle["fontSize"] * 2.5 - fieldSettings["height"]) * scale / 2);
                     }
                     else {
-                        text(50 - i, (i / 10 * this.width / 10 - this.style.fontSize / 2) * scale, (this.height - this.style.fontSize) * scale / 2);
-                        text(50 - i, (i / 10 * this.width / 10 - this.style.fontSize / 2) * scale, (this.style.fontSize * 2.5 - this.height) * scale / 2);
+                        text(50 - i, (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldSettings["height"] - fieldStyle["fontSize"]) * scale / 2);
+                        text(50 - i, (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldStyle["fontSize"] * 2.5 - fieldSettings["height"]) * scale / 2);
                     }
                     break;
                 case 5:
-                    strokeWeight(this.style.ydln5w);
+                    strokeWeight(fieldStyle["ydln5w"]);
 
                     break;
 
             }
-            line(i / 10 * this.width / 10 * scale, -this.height / 2 * scale, i / 10 * this.width / 10 * scale, this.height / 2 * scale);
+            line(i / 10 * fieldSettings["width"] / 10 * scale, -fieldSettings["height"] / 2 * scale, i / 10 * fieldSettings["width"] / 10 * scale, fieldSettings["height"] / 2 * scale);
         }
 
         //Draw Hashes
-        strokeWeight(this.style.hlnw);
+        strokeWeight(fieldStyle["hlnw"]);
         drawingContext.setLineDash([10]);
 
-        line(-this.width / 2 * scale, this.hash_Distance * scale / 2, this.width / 2 * scale, this.hash_Distance * scale / 2);
-        line(-this.width / 2 * scale, this.hash_Distance * scale / -2, this.width / 2 * scale, this.hash_Distance * scale / -2);
+        line(-fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / 2, fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / 2);
+        line(-fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / -2, fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / -2);
 
         //reset
         drawingContext.setLineDash([0]);
