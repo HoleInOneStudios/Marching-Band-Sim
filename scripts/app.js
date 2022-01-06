@@ -12,6 +12,10 @@ let y_offset = 0;
 let x_offset = 0;
 let scale = 8;
 
+let move = true;
+let path = true;
+let show = true;
+
 let pInfo;
 
 function setup() {
@@ -50,19 +54,25 @@ function draw() {
         if (element.sets.length - 1 > maxSet) {
             maxSet = element.sets.length - 1;
         }
-        element.move();
-        element.show();
+        element.update();
+        if (path) { element.showPath(); }
+        if (show) { element.show(); }
     }); //Render and simulate loop
 
 
     lerpNum = (lerpNum + speed) % (1 + speed); //Iterate step in animation
 
-    if (lerpNum >= 1) {
-        currentSet = nextSet;
-        nextSet = (nextSet + 1) % maxSet;
+    if (move) {
+        if (lerpNum >= 1) {
+            currentSet = nextSet;
+            nextSet = (nextSet + 1) % maxSet;
 
-        //console.log(currentSet, nextSet);
-    } //interate set when lerp is above 1
+            //console.log(currentSet, nextSet);
+        } //interate set when lerp is above 1
+    }
+    else {
+        lerpNum = 0;
+    }
 
 
 }
