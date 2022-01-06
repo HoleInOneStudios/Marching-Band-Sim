@@ -12,6 +12,8 @@ let y_offset = 0;
 let x_offset = 0;
 let scale = 8;
 
+let pInfo;
+
 function setup() {
     scale = window.innerWidth / Field.width * .9; //Set to 9 / 10 of the screen width to dynamically adjust field scale
 
@@ -19,12 +21,14 @@ function setup() {
     c.parent(document.getElementById("mainCanvasDiv")); // Assign the canvas to be in the mainCanvasDiv div
     c.id('mainCanvas');
 
-    c.translate(width/2, height/2) // Move origin to center
+    c.translate(width / 2, height / 2) // Move origin to center
 
     //console.log(converter.drillToCoords());
     //console.log(converter.coordsToDrill(converter.drillToCoords()));
 
     select('main').remove(); // delete unused main element
+
+    pInfo = document.getElementById('playerInfo');
 
     stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], 'rgb(0, 0, 255)'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"]));
 }
@@ -36,27 +40,29 @@ function windowResized() {
 }
 
 function draw() {
-    c.translate(width/2, height/2) //Update Origin to Center
+    c.translate(width / 2, height / 2) //Update Origin to Center
+
+    pInfo.innerHTML = `Current Set: ${currentSet} <br> Next Set: ${nextSet}`;
 
     Field.draw(); // Draw field
 
-    stack.forEach(element => { 
-        if (element.sets.length - 1 > maxSet){
+    stack.forEach(element => {
+        if (element.sets.length - 1 > maxSet) {
             maxSet = element.sets.length - 1;
         }
         element.move();
         element.show();
     }); //Render and simulate loop
 
-    
+
     lerpNum = (lerpNum + speed) % (1 + speed); //Iterate step in animation
 
-    if ( lerpNum >= 1){
+    if (lerpNum >= 1) {
         currentSet = nextSet;
         nextSet = (nextSet + 1) % maxSet;
 
         //console.log(currentSet, nextSet);
     } //interate set when lerp is above 1
 
-    
+
 }
