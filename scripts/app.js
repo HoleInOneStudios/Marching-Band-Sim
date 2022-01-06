@@ -21,6 +21,7 @@ let moveC;
 let showC;
 let pathC;
 let speedR;
+let ieArea;
 
 function preload() {
     scale = window.innerWidth / Field.width * .9; //Set to 9 / 10 of the screen width to dynamically adjust field scale
@@ -31,6 +32,7 @@ function preload() {
     pathC = document.getElementById('path');
     showC = document.getElementById('show');
     speedR = document.getElementById('speed');
+    ieArea = document.getElementById('ieArea');
 
     moveC.checked = move;
     pathC.checked = path;
@@ -58,7 +60,7 @@ function windowResized() {
 function draw() {
     c.translate(width / 2, height / 2) //Update Origin to Center
 
-    pInfo.innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet} <br> Move: ${move} Show: ${show} Path: ${path} `;
+    pInfo.innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet}`;
 
     move = moveC.checked;
     path = pathC.checked;

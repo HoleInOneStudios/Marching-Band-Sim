@@ -15,13 +15,13 @@ class FieldObject {
         this.update = function () {
             if (this.sets.length > nextSet) {
                 //console.log("move");
-                this.position = p5.Vector.lerp(converter.drillToCoords(this.sets[currentSet]), converter.drillToCoords(this.sets[nextSet]), lerpNum);
+                this.position = p5.Vector.lerp(drillToCoords(this.sets[currentSet]), drillToCoords(this.sets[nextSet]), lerpNum);
             }
         }
 
         this.setPosition = function (s) {
             if (s < this.sets.length) {
-                this.position = converter.drillToCoords(this.sets[s]);
+                this.position = drillToCoords(this.sets[s]);
             }
             //console.log(this.position);
         }
@@ -29,7 +29,7 @@ class FieldObject {
         this.showPath = function () {
             strokeWeight(3);
             for (let i = 0; i < this.sets.length; i++) {
-                line(converter.drillToCoords(this.sets[i]).x, converter.drillToCoords(this.sets[i]).y, converter.drillToCoords(this.sets[i + 1]).x, converter.drillToCoords(this.sets[i + 1]).y)
+                line(drillToCoords(this.sets[i]).x, drillToCoords(this.sets[i]).y, drillToCoords(this.sets[i + 1]).x, drillToCoords(this.sets[i + 1]).y)
             }
 
             strokeWeight(1);

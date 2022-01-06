@@ -9,6 +9,7 @@
     <script src="scripts/field.js"></script>
     <script src="scripts/fieldObject.js"></script>
     <script src="scripts/converter.js"></script>
+    <script src="scripts/importExport.js"></script>
 
     <script src="scripts/app.js"></script>
 
@@ -33,6 +34,12 @@
 
       <label for="speed">Speed</label>
       <input type="range" id="speed" min=".01" max=".09" step=".01" />
+    </div>
+
+    <div id="importExport">
+      <textarea id="ieArea" value="[]"></textarea>
+      <button onclick="buttExport();">Export</button>
+      <button onclick="buttImport();">Import</button>
     </div>
   </body>
 </html>

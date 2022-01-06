@@ -18,3 +18,7 @@ body {
   border-radius: 1rem;
   border: solid 2px black;
 }
+
+#ieArea {
+  width: 100%;
+}
