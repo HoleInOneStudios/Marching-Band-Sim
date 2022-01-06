@@ -1,20 +1,20 @@
 div {
-    border: solid 2px black;
-    border-radius: 1rem;
-    padding: 10px;
+  border: solid 2px black;
+  border-radius: 1rem;
+  padding: 10px;
 }
 
 body {
-    width: fit-content;
-    height: fit-content;
+  width: fit-content;
+  height: fit-content;
 
-    font-family: 'Courier New', Courier, monospace;
-    font-variant: small-caps;
-    font-weight: bold;
-    font-size: 1.2rem;
+  font-family: "Courier New", Courier, monospace;
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 #mainCanvas {
-    border-radius: 1rem;
-    border: solid 2px black;
+  border-radius: 1rem;
+  border: solid 2px black;
 }
