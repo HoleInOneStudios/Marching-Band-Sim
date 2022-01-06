@@ -21,7 +21,7 @@ function setup() {
     c.parent(document.getElementById("mainCanvasDiv")); // Assign the canvas to be in the mainCanvasDiv div
     c.id('mainCanvas');
 
-    c.translate(width/2, height/2) // Move origin to center
+    c.translate(width / 2, height / 2) // Move origin to center
 
     //console.log(converter.drillToCoords());
     //console.log(converter.coordsToDrill(converter.drillToCoords()));
@@ -40,29 +40,29 @@ function windowResized() {
 }
 
 function draw() {
-    c.translate(width/2, height/2) //Update Origin to Center
+    c.translate(width / 2, height / 2) //Update Origin to Center
 
     pInfo.innerHTML = `Current Set: ${currentSet} <br> Next Set: ${nextSet}`;
 
     Field.draw(); // Draw field
 
-    stack.forEach(element => { 
-        if (element.sets.length - 1 > maxSet){
+    stack.forEach(element => {
+        if (element.sets.length - 1 > maxSet) {
             maxSet = element.sets.length - 1;
         }
         element.move();
         element.show();
     }); //Render and simulate loop
 
-    
+
     lerpNum = (lerpNum + speed) % (1 + speed); //Iterate step in animation
 
-    if ( lerpNum >= 1){
+    if (lerpNum >= 1) {
         currentSet = nextSet;
         nextSet = (nextSet + 1) % maxSet;
 
         //console.log(currentSet, nextSet);
     } //interate set when lerp is above 1
 
-    
+
 }

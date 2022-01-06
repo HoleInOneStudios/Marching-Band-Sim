@@ -1,0 +1,20 @@
+{
+    "files.autoSave": "onWindowChange",
+    "files.exclude": {
+        "": true
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "diffEditor.codeLens": true,
+    "debug.allowBreakpointsEverywhere": true,
+    "markdown.allAvailableLanguages": true,
+    "markdown.previewFeatures": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentHandlebars": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.templating": true,
+    "java.codeGeneration.generateComments": true,
+    "markdown.preview.breaks": true,
+    "markdown.preview.typographer": true
+}
