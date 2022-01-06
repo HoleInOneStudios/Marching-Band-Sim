@@ -9,6 +9,7 @@
     <script src="scripts/field.js"></script>
     <script src="scripts/fieldObject.js"></script>
     <script src="scripts/converter.js"></script>
+    <script src="scripts/importExport.js"></script>
 
     <script src="scripts/app.js"></script>
 
@@ -18,8 +19,27 @@
     <div id="mainCanvasDiv"></div>
 
     <div id="info">
-        <h2>Info</h2>
-        <p id="playerInfo"></p>
+      <h2>Info</h2>
+      <p id="playerInfo"></p>
+    </div>
+
+    <div id="settings">
+      <h2>Settings</h2>
+
+      <label for="move">Move</label><input type="checkbox" id="move" />
+
+      <label for="move">Show</label><input type="checkbox" id="show" />
+
+      <label for="move">Path</label><input type="checkbox" id="path" />
+
+      <label for="speed">Speed</label>
+      <input type="range" id="speed" min=".01" max=".09" step=".01" />
+    </div>
+
+    <div id="importExport">
+      <textarea id="ieArea" value="[]"></textarea>
+      <button onclick="buttExport();">Export</button>
+      <button onclick="buttImport();">Import</button>
     </div>
   </body>
 </html>
