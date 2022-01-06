@@ -1,7 +1,7 @@
 class FieldObject {
-    position = createVector();
-    color = 'rgb(255, 0, 0)'
-    sets = ["S1-Y50-I0-H1-J0"];
+    position = createVector(); //position of object
+    color = 'rgb(255, 0, 0)' //rgb color of fill
+    sets = ["S1-Y50-I0-H1-J0"]; //array of drill strings
 
     constructor(sets = this.sets, color = this.color) {
         this.sets.push(...sets);

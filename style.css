@@ -21,4 +21,5 @@ body {
 
 #ieArea {
   width: 100%;
+  resize: vertical;
 }

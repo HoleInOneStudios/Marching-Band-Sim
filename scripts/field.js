@@ -3,6 +3,7 @@ const Field = {
     height: 160 / 3,
     hash_Distance: 40 / 3,
 
+    //Styles of field for easy modification in the program
     style: {
         bg: 'rgb(50, 150, 50)',
         lnCol: 'rgb(255, 255, 255)',
@@ -12,9 +13,6 @@ const Field = {
         fontSize: 5
     },
 
-    /**
-     * Draw the markings on the field
-     */
     draw: function () {
         background(this.style.bg); // Fill background
 
