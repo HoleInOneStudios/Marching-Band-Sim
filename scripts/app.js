@@ -65,10 +65,10 @@ function draw() {
 
     elements["pInfo"].innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet}`; //set the info text
 
-    fieldSettings["move"] = elements["moveC"].checked; //update values
-    fieldSettings["path"] = elements["pathC"].checked; //update values
-    fieldSettings["show"] = elements["showC"].checked; //update values
-    fieldSettings["speed"] = parseFloat(elements["speedR"].value); //update values
+    playerSettings["move"] = elements["moveC"].checked; //update values
+    playerSettings["path"] = elements["pathC"].checked; //update values
+    playerSettings["show"] = elements["showC"].checked; //update values
+    playerSettings["speed"] = parseFloat(elements["speedR"].value); //update values
 
     Field.draw(); // Draw field
 
