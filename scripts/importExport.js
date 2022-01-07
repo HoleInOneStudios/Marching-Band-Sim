@@ -36,7 +36,7 @@ function importJson(J) {
     Object.assign(fieldSettings, result["settings"]);
     Object.assign(fieldStyle, result["style"]);
 
-
+    windowResized();
 }
 
 /**

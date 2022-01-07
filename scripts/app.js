@@ -24,7 +24,10 @@ let elements = {
     "moveC": null, //checkbox that controls player settings
     "showC": null, //checkbox that controls player settings 
     "speedR": null, //slider that constrols speed
-    "ieArea": null //text area for importing and exporting
+    "ieArea": null, //text area for importing and exporting
+
+    "bgColorS": null,
+    "lnColorS": null
 }
 
 function preload() {
@@ -36,11 +39,15 @@ function preload() {
     elements["showC"] = document.getElementById('show'); //checkbox that controls player settings  (get element)
     elements["speedR"] = document.getElementById('speed'); //slider that constrols speed (get element)
     elements["ieArea"] = document.getElementById('ieArea'); //text area for importing and exporting (get element)
+    elements["bgColorS"] = document.getElementById('bgColor');
+    elements["lnColorS"] = document.getElementById('lnColor');
 
     elements["moveC"].checked = playerSettings["move"]; //set values to predefined values to be updated
     elements["pathC"].checked = playerSettings["path"]; //set values to predefined values to be updated
     elements["showC"].checked = playerSettings["show"]; //set values to predefined values to be updated
     elements["speedR"].value = playerSettings["speed"]; //set values to predefined values to be updated
+    elements["bgColorS"].value = fieldStyle["bg"];
+    elements["lnColorS"].value = fieldStyle["ln"];
 }
 
 function setup() {
@@ -52,7 +59,7 @@ function setup() {
 
     select('main').remove(); // delete unused main element
 
-    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], 'rgb(0, 0, 255)'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"])); //add objects to stack
+    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], '#0000ff'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"], '#ff0000')); //add objects to stack
 }
 
 function windowResized() {
@@ -69,6 +76,8 @@ function draw() {
     playerSettings["path"] = elements["pathC"].checked; //update values
     playerSettings["show"] = elements["showC"].checked; //update values
     playerSettings["speed"] = parseFloat(elements["speedR"].value); //update values
+    fieldStyle["bg"] = elements["bgColorS"].value;
+    fieldStyle["ln"] = elements["lnColorS"].value;
 
     Field.draw(); // Draw field
 
