@@ -17,7 +17,7 @@ let scale = 8; //dynamic scale of field to screen
 
 let playerSettings = {
     "move": true, //objects move or not
-    "path": true, //paths drawn or not
+    "path": false, //paths drawn or not
     "show": true, //objects shown or not
     "speed": 0.02 //speed of objects
 }
@@ -93,8 +93,8 @@ function draw() {
             maxSet = element.sets.length - 1;
         } //check that the max set is the max set and if not set the max set to the new max set
         element.update(); //update object positions
-        if (path) { element.showPath(); } //draw path if path is true
-        if (show) { element.show(); } // show if show is true
+        if (playerSettings["path"]) { element.showPath(); } //draw path if path is true
+        if (playerSettings["show"]) { element.show(); } // show if show is true
     }); //Render and simulate loop
 
 
