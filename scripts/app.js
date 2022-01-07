@@ -4,7 +4,12 @@ let stack = []; //Array of objects
 let maxSet = 0; //greatest set of objects in array
 let currentSet = 0; //current set
 let nextSet = 1; //next set
-let lerpNum = 0.0; //used to move 
+let lerpNum = 0.0; //used to move
+
+let mp = {
+    x: 0,
+    y: 0
+};
 
 let y_offset = 0; //depricated
 let x_offset = 0; //depricated
@@ -57,6 +62,8 @@ function setup() {
     elements["c"].id('mainCanvas'); // set id of canvas
     elements["c"].translate(width / 2, height / 2) // Move origin to center
 
+    elements["c"].mouseMoved(mousePosition);
+
     select('main').remove(); // delete unused main element
 
     stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], '#0000ff'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"], '#ff0000')); //add objects to stack
@@ -70,7 +77,7 @@ function windowResized() {
 function draw() {
     elements["c"].translate(width / 2, height / 2) //Update Origin to Center
 
-    elements["pInfo"].innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet}`; //set the info text
+    elements["pInfo"].innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet} Mouse Position: ${mp.x} ${mp.y}`; //set the info text
 
     playerSettings["move"] = elements["moveC"].checked; //update values
     playerSettings["path"] = elements["pathC"].checked; //update values
@@ -103,5 +110,8 @@ function draw() {
         lerpNum = 0;
     } //if move is true and lerpNum is above 1 go to next set else set lerpnum to 0
 
+}
 
+function mousePosition(e) {
+    mp = new p5.Vector(parseInt(mouseX - width / 2), parseInt(mouseY - height / 2));
 }
