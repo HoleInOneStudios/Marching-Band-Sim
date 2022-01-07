@@ -6,8 +6,8 @@ let fieldSettings = {
 
 //Styles of field for easy modification in the program
 let fieldStyle = {
-    "bg": 'rgb(50, 150, 50)',
-    "lnCol": 'rgb(255, 255, 255)',
+    "bg": '#008700',
+    "ln": '#ffffff',
     "ydln10w": 4,
     "ydln5w": 2,
     "hlnw": 3,
@@ -19,8 +19,8 @@ const Field = {
         background(fieldStyle["bg"]); // Fill background
 
         //Draw yard lines and text
-        stroke(fieldStyle["lnCol"]);
-        fill(255, 255, 255);
+        stroke(fieldStyle["ln"]);
+        fill(fieldStyle["ln"]);
         textSize(fieldStyle["fontSize"] * scale);
 
         for (let i = -45; i < 50; i += 5) {

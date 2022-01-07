@@ -4,7 +4,12 @@ let stack = []; //Array of objects
 let maxSet = 0; //greatest set of objects in array
 let currentSet = 0; //current set
 let nextSet = 1; //next set
-let lerpNum = 0.0; //used to move 
+let lerpNum = 0.0; //used to move
+
+let mp = {
+    x: 0,
+    y: 0
+};
 
 let y_offset = 0; //depricated
 let x_offset = 0; //depricated
@@ -12,7 +17,7 @@ let scale = 8; //dynamic scale of field to screen
 
 let playerSettings = {
     "move": true, //objects move or not
-    "path": true, //paths drawn or not
+    "path": false, //paths drawn or not
     "show": true, //objects shown or not
     "speed": 0.02 //speed of objects
 }
@@ -24,7 +29,10 @@ let elements = {
     "moveC": null, //checkbox that controls player settings
     "showC": null, //checkbox that controls player settings 
     "speedR": null, //slider that constrols speed
-    "ieArea": null //text area for importing and exporting
+    "ieArea": null, //text area for importing and exporting
+
+    "bgColorS": null,
+    "lnColorS": null
 }
 
 function preload() {
@@ -36,11 +44,15 @@ function preload() {
     elements["showC"] = document.getElementById('show'); //checkbox that controls player settings  (get element)
     elements["speedR"] = document.getElementById('speed'); //slider that constrols speed (get element)
     elements["ieArea"] = document.getElementById('ieArea'); //text area for importing and exporting (get element)
+    elements["bgColorS"] = document.getElementById('bgColor');
+    elements["lnColorS"] = document.getElementById('lnColor');
 
     elements["moveC"].checked = playerSettings["move"]; //set values to predefined values to be updated
     elements["pathC"].checked = playerSettings["path"]; //set values to predefined values to be updated
     elements["showC"].checked = playerSettings["show"]; //set values to predefined values to be updated
     elements["speedR"].value = playerSettings["speed"]; //set values to predefined values to be updated
+    elements["bgColorS"].value = fieldStyle["bg"];
+    elements["lnColorS"].value = fieldStyle["ln"];
 }
 
 function setup() {
@@ -50,9 +62,11 @@ function setup() {
     elements["c"].id('mainCanvas'); // set id of canvas
     elements["c"].translate(width / 2, height / 2) // Move origin to center
 
+    elements["c"].mouseMoved(mousePosition);
+
     select('main').remove(); // delete unused main element
 
-    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], 'rgb(0, 0, 255)'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"])); //add objects to stack
+    stack.push(new FieldObject(["S1-Y45-I0-H2-J0", "S1-Y35-I0-H2-J0", "S1-Y35-I0-H2-J0"], '#0000ff'), new FieldObject(["S1-Y50-I0-H2-J0", "S1-Y50-I0-H2-J0"], '#ff0000')); //add objects to stack
 }
 
 function windowResized() {
@@ -63,12 +77,14 @@ function windowResized() {
 function draw() {
     elements["c"].translate(width / 2, height / 2) //Update Origin to Center
 
-    elements["pInfo"].innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet}`; //set the info text
+    elements["pInfo"].innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet} Mouse Position: ${mp.x} ${mp.y}`; //set the info text
 
     playerSettings["move"] = elements["moveC"].checked; //update values
     playerSettings["path"] = elements["pathC"].checked; //update values
     playerSettings["show"] = elements["showC"].checked; //update values
     playerSettings["speed"] = parseFloat(elements["speedR"].value); //update values
+    fieldStyle["bg"] = elements["bgColorS"].value;
+    fieldStyle["ln"] = elements["lnColorS"].value;
 
     Field.draw(); // Draw field
 
@@ -77,8 +93,8 @@ function draw() {
             maxSet = element.sets.length - 1;
         } //check that the max set is the max set and if not set the max set to the new max set
         element.update(); //update object positions
-        if (path) { element.showPath(); } //draw path if path is true
-        if (show) { element.show(); } // show if show is true
+        if (playerSettings["path"]) { element.showPath(); } //draw path if path is true
+        if (playerSettings["show"]) { element.show(); } // show if show is true
     }); //Render and simulate loop
 
 
@@ -94,5 +110,8 @@ function draw() {
         lerpNum = 0;
     } //if move is true and lerpNum is above 1 go to next set else set lerpnum to 0
 
+}
 
+function mousePosition(e) {
+    mp = new p5.Vector(parseInt(mouseX - width / 2), parseInt(mouseY - height / 2));
 }
