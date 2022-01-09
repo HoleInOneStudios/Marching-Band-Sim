@@ -38,17 +38,3 @@ function importJson(J) {
 
     windowResized();
 }
-
-/**
- * Function called by the export button to export the stack to the import export text area
- */
-function buttExport() {
-    ieArea.value = exportJson();
-}
-
-/**
- * Function called by the import button to import the value of the import export text area to the stack
- */
-function buttImport() {
-    importJson(ieArea.value);
-}

@@ -9,7 +9,7 @@ let lerpNum = 0.0; //used to move
 let mp = {
     x: 0,
     y: 0
-};
+}; // mouse position
 
 let y_offset = 0; //depricated
 let x_offset = 0; //depricated
