@@ -19,6 +19,12 @@
   <body>
     <div id="mainCanvasDiv"></div>
 
+    <div id="playerControl">
+      <button onclick="GoToPreviousSet()">Previous</button>
+      <button onclick="toggleMove()">Pause/Play</button>
+      <button onclick="GoToNextSet()">Next</button>
+    </div>
+
     <div id="info">
       <h2>Info</h2>
       <p id="playerInfo"></p>
@@ -27,11 +33,9 @@
     <div id="playersettings">
       <h2>Player Settings</h2>
 
-      <label for="move">Move</label><input type="checkbox" id="move" />
+      <label for="show">Show</label><input type="checkbox" id="show" />
 
-      <label for="move">Show</label><input type="checkbox" id="show" />
-
-      <label for="move">Path</label><input type="checkbox" id="path" />
+      <label for="path">Path</label><input type="checkbox" id="path" />
 
       <label for="speed">Speed</label>
       <input type="range" id="speed" min=".01" max=".09" step=".01" />
