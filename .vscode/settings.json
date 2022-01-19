@@ -1,67 +1,19 @@
 {
-    "files.autoSave": "onWindowChange",
-    "files.exclude": {
-        "": true
-    },
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "diffEditor.codeLens": true,
-    "debug.allowBreakpointsEverywhere": true,
-    "markdown.allAvailableLanguages": true,
-    "markdown.previewFeatures": true,
-    "html.format.endWithNewline": true,
-    "html.format.indentHandlebars": true,
-    "html.format.indentInnerHtml": true,
-    "html.format.templating": true,
-    "java.codeGeneration.generateComments": true,
-    "markdown.preview.breaks": true,
-    "markdown.preview.typographer": true,
-    "better-comments.tags": [
-        {
-            "tag": "!",
-            "color": "#FF2D00",
-            "strikethrough": false,
-            "underline": false,
-            "backgroundColor": "transparent",
-            "bold": false,
-            "italic": false
-        },
-        {
-            "tag": "?",
-            "color": "#3498DB",
-            "strikethrough": false,
-            "underline": false,
-            "backgroundColor": "transparent",
-            "bold": false,
-            "italic": false
-        },
-        {
-            "tag": "//",
-            "color": "#474747",
-            "strikethrough": true,
-            "underline": false,
-            "backgroundColor": "transparent",
-            "bold": false,
-            "italic": false
-        },
-        {
-            "tag": "todo",
-            "color": "#FF8C00",
-            "strikethrough": false,
-            "underline": false,
-            "backgroundColor": "transparent",
-            "bold": false,
-            "italic": false
-        },
-        {
-            "tag": "*",
-            "color": "#98C379",
-            "strikethrough": false,
-            "underline": false,
-            "backgroundColor": "transparent",
-            "bold": false,
-            "italic": false
-        }
-    ]
+  "files.autoSave": "afterDelay",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "diffEditor.codeLens": true,
+  "debug.allowBreakpointsEverywhere": true,
+  "markdown.allAvailableLanguages": true,
+  "markdown.previewFeatures": true,
+  "html.format.endWithNewline": true,
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.templating": true,
+  "java.codeGeneration.generateComments": true,
+  "markdown.preview.breaks": true,
+  "markdown.preview.typographer": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

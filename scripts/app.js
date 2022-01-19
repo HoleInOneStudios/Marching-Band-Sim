@@ -9,7 +9,7 @@ let lerpNum = 0.0; //used to move
 let mp = {
     x: 0,
     y: 0
-};
+}; // mouse position
 
 let y_offset = 0; //depricated
 let x_offset = 0; //depricated
@@ -26,7 +26,6 @@ let elements = {
     "c": null, //Canvas element variable
     "pInfo": null, //p element that contains info
     "pathC": null, //checkbox that controls player settings 
-    "moveC": null, //checkbox that controls player settings
     "showC": null, //checkbox that controls player settings 
     "speedR": null, //slider that constrols speed
     "ieArea": null, //text area for importing and exporting
@@ -39,7 +38,6 @@ function preload() {
     scale = window.innerWidth / fieldSettings["width"] * .9; //Set to 9 / 10 of the screen width to dynamically adjust field scale
 
     elements["pInfo"] = document.getElementById('playerInfo'); //p element that contains info (get element)
-    elements["moveC"] = document.getElementById('move'); //checkbox that controls player settings (get element)
     elements["pathC"] = document.getElementById('path'); //checkbox that controls player settings  (get element)
     elements["showC"] = document.getElementById('show'); //checkbox that controls player settings  (get element)
     elements["speedR"] = document.getElementById('speed'); //slider that constrols speed (get element)
@@ -47,7 +45,6 @@ function preload() {
     elements["bgColorS"] = document.getElementById('bgColor');
     elements["lnColorS"] = document.getElementById('lnColor');
 
-    elements["moveC"].checked = playerSettings["move"]; //set values to predefined values to be updated
     elements["pathC"].checked = playerSettings["path"]; //set values to predefined values to be updated
     elements["showC"].checked = playerSettings["show"]; //set values to predefined values to be updated
     elements["speedR"].value = playerSettings["speed"]; //set values to predefined values to be updated
@@ -79,7 +76,6 @@ function draw() {
 
     elements["pInfo"].innerHTML = `Current Set: ${currentSet} Next Set: ${nextSet} Mouse Position: ${mp.x} ${mp.y}`; //set the info text
 
-    playerSettings["move"] = elements["moveC"].checked; //update values
     playerSettings["path"] = elements["pathC"].checked; //update values
     playerSettings["show"] = elements["showC"].checked; //update values
     playerSettings["speed"] = parseFloat(elements["speedR"].value); //update values
