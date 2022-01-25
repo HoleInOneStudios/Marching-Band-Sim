@@ -1,56 +1,41 @@
 <!DOCTYPE html>
-<html lang="html">
+<html>
   <head>
-    <script src="libraries/p5.js"></script>
-    <script src="libraries/p5.sound.js"></script>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Marching band, drill" />
+    <meta name="description" content="Marching Band Drill Creator and Viewer" />
+    <meta name="author" content="Benjamin Bowles" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="style.css" rel="stylesheet" />
+    <!-- Link Tags -->
+    <link rel="stylesheet" href="style.css" />
 
-    <script src="scripts/field.js"></script>
-    <script src="scripts/fieldObject.js"></script>
-    <script src="scripts/converter.js"></script>
+    <!-- Script Tags -->
     <script src="scripts/importExport.js"></script>
     <script src="scripts/control.js"></script>
-
+    <script src="scripts/converter.js"></script>
+    <script src="scripts/fieldObject.js"></script>
+    <script src="scripts/field.js"></script>
     <script src="scripts/app.js"></script>
-
-    <title>Marching Band Sim (Web Edition)</title>
   </head>
-  <body>
-    <div id="mainCanvasDiv"></div>
-
-    <div id="playerControl">
-      <button onclick="GoToPreviousSet()">Previous</button>
-      <button onclick="toggleMove()">Pause/Play</button>
-      <button onclick="GoToNextSet()">Next</button>
+  <body onload="init()">
+    <div>
+      <canvas id="mainCanvas"> </canvas>
     </div>
-
-    <div id="info">
-      <h2>Info</h2>
-      <p id="playerInfo"></p>
+    <div>
+      <button id="previous" onclick="GoToPreviousSet()">Previous</button>
+      <button id="playpause" onclick="toggleMove()">Play/Pause</button>
+      <button id="next" onclick="GoToNextSet()">Next</button>
     </div>
-
-    <div id="playersettings">
-      <h2>Player Settings</h2>
-
-      <label for="show">Show</label><input type="checkbox" id="show" />
-
-      <label for="path">Path</label><input type="checkbox" id="path" />
-
-      <label for="speed">Speed</label>
-      <input type="range" id="speed" min=".01" max=".09" step=".01" />
-
-      <label for="bgColor">Background Color: </label>
-      <input type="color" id="bgColor" />
-
-      <label for="lnColor">Line Color: </label>
-      <input type="color" id="lnColor" />
-    </div>
-
-    <div id="importExport">
-      <textarea id="ieArea" value="[]"></textarea>
-      <button onclick="buttExport();">Export</button>
-      <button onclick="buttImport();">Import</button>
+    <div>
+      <textarea id="ieArea">[]</textarea>
+      <button id="import" onclick="buttImport()">Import</button>
+      <button id="export" onclick="buttExport()">Export</button>
+      <button id="download" onclick="download('drill', exportJson())">
+        Download
+      </button>
+      <input type="file" id="upload" oninput="uploadJson(event)"">
     </div>
   </body>
 </html>

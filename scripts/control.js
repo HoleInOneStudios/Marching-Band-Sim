@@ -23,5 +23,36 @@ function GoToPreviousSet() {
 }
 
 function toggleMove() {
-    playerSettings["move"] = !playerSettings["move"];
+    move = !move;
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+function uploadJson(e){
+    var fr = new FileReader();
+
+    var files = e.target.files;
+    fr.readAsText(files[0]);
+
+    fr.onload = function(){
+        text = fr.result;
+        //console.log(text);
+
+        importJson(text);
+        ieArea.value = text;
+
+        return text;
+    }
+
 }
