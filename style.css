@@ -1,7 +1,24 @@
 /* Importing fonts and icons */
 
-
 /* Main Styles */
+body {
+  width: max-content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 canvas {
-    border: solid rgb(0, 0, 0) 5px;
+  border: solid rgb(0, 0, 0) 5px;
+}
+
+#importExport {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttCon {
+  display: flex;
+  flex-direction: row;
 }

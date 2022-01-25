@@ -20,22 +20,24 @@
     <script src="scripts/app.js"></script>
   </head>
   <body onload="init()">
-    <div>
+    <main>
       <canvas id="mainCanvas"> </canvas>
-    </div>
-    <div>
+    </main>
+    <div id="controls" class="buttCon">
       <button id="previous" onclick="GoToPreviousSet()">Previous</button>
       <button id="playpause" onclick="toggleMove()">Play/Pause</button>
       <button id="next" onclick="GoToNextSet()">Next</button>
     </div>
-    <div>
+    <div id="importExport">
       <textarea id="ieArea">[]</textarea>
-      <button id="import" onclick="buttImport()">Import</button>
-      <button id="export" onclick="buttExport()">Export</button>
-      <button id="download" onclick="download('drill', exportJson())">
-        Download
-      </button>
-      <input type="file" id="upload" oninput="uploadJson(event)"">
+      <div class="buttCon">
+        <button id="import" onclick="buttImport()">Import</button>
+        <button id="export" onclick="buttExport()">Export</button>
+        <button id="download" onclick="download('drill', exportJson())">
+          Download
+        </button>
+        <input type="file" id="upload" oninput="uploadJson(event)"">
+      </div>
     </div>
   </body>
 </html>
