@@ -5,8 +5,8 @@
 function exportJson() {
     let json = {};
 
-    json["style"] = fieldStyle;
-    json["settings"] = fieldSettings;
+    json["style"] = Field.style;
+    json["settings"] = settings;
 
     let ex = [];
     stack.forEach(element => {
@@ -32,9 +32,8 @@ function importJson(J) {
     result.objects.forEach(element => {
         stack.push(new FieldObject(element["sets"], element["color"]))
     });
+    Object.assign(settings, result["settings"]);
+    Object.assign(Field.style, result["style"]);
 
-    Object.assign(fieldSettings, result["settings"]);
-    Object.assign(fieldStyle, result["style"]);
-
-    windowResized();
+    resizeCanvas();
 }

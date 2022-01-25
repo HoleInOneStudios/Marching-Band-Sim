@@ -1,5 +1,5 @@
 class FieldObject {
-    position = createVector(); //position of object
+    position = {x: 0, y: 0}; //position of object
     color = '#ff00ff' //rgb color of fill
     sets = ["S1-Y50-I0-H1-J0"]; //array of drill strings
 
@@ -8,14 +8,16 @@ class FieldObject {
         this.color = color;
 
         this.show = function () {
-            fill(this.color);
-            ellipse(this.position.x, this.position.y, 1.5 * scale);
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.ellipse(this.position.x, this.position.y, 1.5 * scale, 1.5 * scale, 0, 0, 360);
+            ctx.fill();
         }
 
         this.update = function () {
             if (this.sets.length > nextSet) {
                 //console.log("move");
-                this.position = p5.Vector.lerp(drillToCoords(this.sets[currentSet]), drillToCoords(this.sets[nextSet]), lerpNum);
+                this.position = lerpVector(drillToCoords(this.sets[currentSet]), drillToCoords(this.sets[nextSet]), lerpNum);
             }
         }
 
@@ -27,12 +29,15 @@ class FieldObject {
         }
 
         this.showPath = function () {
-            strokeWeight(3);
+            ctx.lineWidth = 3;
             for (let i = 0; i < this.sets.length; i++) {
-                line(drillToCoords(this.sets[i]).x, drillToCoords(this.sets[i]).y, drillToCoords(this.sets[i + 1]).x, drillToCoords(this.sets[i + 1]).y)
+                ctx.beginPath();
+                ctx.moveTo(drillToCoords(this.sets[i]).x, drillToCoords(this.sets[i]).y);
+                ctx.lineTo(drillToCoords(this.sets[i + 1]).x, drillToCoords(this.sets[i + 1]).y);
+                ctx.stroke();
             }
 
-            strokeWeight(1);
+            ctx.lineWidth = 1;
         }
 
     }

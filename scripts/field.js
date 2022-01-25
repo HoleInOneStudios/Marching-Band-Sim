@@ -1,62 +1,70 @@
-let fieldSettings = {
-    "width": 100,
-    "height": 160 / 3,
-    "hash_distance": 40 / 3
-}
-
-//Styles of field for easy modification in the program
-let fieldStyle = {
-    "bg": '#008700',
-    "ln": '#ffffff',
-    "ydln10w": 4,
-    "ydln5w": 2,
-    "hlnw": 3,
-    "fontSize": 5
-}
-
 const Field = {
+    style: {
+        "bg": '#008700',
+        "ln": '#ffffff',
+        "ydln10w": 1,
+        "ydln5w": .5,
+        "hlnw": 3,
+        "fontSize": 5
+    },
+    
     draw: function () {
-        background(fieldStyle["bg"]); // Fill background
+        //draw grass
+        ctx.fillStyle = this.style["bg"];
+        ctx.fillRect(0, 0, settings["width"]  * scale, settings["height"] * scale);
 
-        //Draw yard lines and text
-        stroke(fieldStyle["ln"]);
-        fill(fieldStyle["ln"]);
-        textSize(fieldStyle["fontSize"] * scale);
-
-        for (let i = -45; i < 50; i += 5) {
+        //drawing parts
+        ctx.strokeStyle = this.style["ln"];
+        ctx.font = this.style["fontSize"]*scale+"px serif";
+        for (let i = 5; i < 100; i += 5) {
             switch (Math.abs(i % 10)) {
                 case 0:
-                    strokeWeight(fieldStyle["ydln10w"]);
-                    if (i < 0) {
-                        text(Math.abs(i + 50), (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldSettings["height"] - fieldStyle["fontSize"]) * scale / 2);
-                        text(Math.abs(i + 50), (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldStyle["fontSize"] * 2.5 - fieldSettings["height"]) * scale / 2);
+                    //text drawing
+                    if (i <= 50) {
+                        ctx.strokeText(Math.abs(i), (i / 10 * settings["width"]  / 10 - this.style["fontSize"] / 2) * scale, ( settings["height"] - this.style["fontSize"]) * scale);
+                        ctx.strokeText(Math.abs(i), (i / 10 * settings["width"]  / 10 - this.style["fontSize"] / 2) * scale, (this.style["fontSize"] * 1.5) * scale);
                     }
                     else {
-                        text(50 - i, (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldSettings["height"] - fieldStyle["fontSize"]) * scale / 2);
-                        text(50 - i, (i / 10 * fieldSettings["width"] / 10 - fieldStyle["fontSize"] / 2) * scale, (fieldStyle["fontSize"] * 2.5 - fieldSettings["height"]) * scale / 2);
+                        ctx.strokeText(100 - i, (i / 10 * settings["width"]  / 10 - this.style["fontSize"] / 2) * scale, ( settings["height"] - this.style["fontSize"]) * scale);
+                        ctx.strokeText(100 - i, (i / 10 * settings["width"]  / 10 - this.style["fontSize"] / 2) * scale, (this.style["fontSize"] * 1.5) * scale);
                     }
+                    ctx.lineWidth = this.style["ydln10w"] * scale;
                     break;
+
                 case 5:
-                    strokeWeight(fieldStyle["ydln5w"]);
-
+                    ctx.lineWidth = this.style["ydln5w"] * scale;
                     break;
-
+            
+                default:
+                    break;
             }
-            line(i / 10 * fieldSettings["width"] / 10 * scale, -fieldSettings["height"] / 2 * scale, i / 10 * fieldSettings["width"] / 10 * scale, fieldSettings["height"] / 2 * scale);
+            //yd line drawing
+            ctx.beginPath();
+
+            ctx.moveTo(i * scale, 0);
+            ctx.lineTo(i * scale, settings["height"] * scale);
+
+            ctx.stroke();
         }
 
-        //Draw Hashes
-        strokeWeight(fieldStyle["hlnw"]);
-        drawingContext.setLineDash([10]);
+        //hash drawing
+        ctx.strokeStyle = this.style["hlnw"];
+        ctx.setLineDash([10]);
 
-        line(-fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / 2, fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / 2);
-        line(-fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / -2, fieldSettings["width"] / 2 * scale, fieldSettings["hash_distance"] * scale / -2);
+        ctx.beginPath();
+        ctx.moveTo(0, ( settings["height"] - settings["hash_distance"] ) * scale);
+        ctx.lineTo(settings["width"] * scale, ( settings["height"] - settings["hash_distance"] ) * scale);
+        ctx.stroke();
 
-        //reset
-        drawingContext.setLineDash([0]);
-        stroke(0);
-        fill(0);
-        strokeWeight(1);
+        ctx.beginPath();
+        ctx.moveTo(0, settings["hash_distance"]  * scale);
+        ctx.lineTo( settings["width"] * scale, settings["hash_distance"]  * scale);
+        ctx.stroke();
 
+        //Reset for other drawing
+        ctx.setLineDash([0]);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 1;
+        ctx.fillStyle = 'white';
     }
 }
