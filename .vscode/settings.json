@@ -1,0 +1,22 @@
+{
+    "editor.linkedEditing": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentHandlebars": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.templating": true,
+    "editor.bracketPairColorization.enabled": true,
+    "files.autoGuessEncoding": true,
+    "diffEditor.codeLens": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "problems.showCurrentInStatus": true,
+    "better-comments.highlightPlainText": true,
+    "color-highlight.matchRgbWithNoFunction": true,
+    "color-highlight.matchWords": true,
+    "markdown.allAvailableLanguages": true,
+    "markdown.alwaysIncludeLocScope": true,
+    "markdown.enableMetadataDateReminder": true,
+    "markdown.previewFeatures": true,
+    "markdown.showToolbar": true
+}
