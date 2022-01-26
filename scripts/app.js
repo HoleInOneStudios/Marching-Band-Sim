@@ -35,6 +35,10 @@ let play = '<img alt="Play" src="./rsc/play_arrow_black_24dp.svg" />';
 let pause = '<img alt="Pause" src="./rsc/pause_black_24dp.svg" />';
 let playPause;
 
+let debugP;
+
+let mp = { x: 0, y: 0 };
+
 function init() {
     c = document.getElementById('mainCanvas');
     ctx = c.getContext("2d");
@@ -43,6 +47,8 @@ function init() {
 
     playPause = document.getElementById('playpause');
     playPause.innerHTML = pause;
+
+    debugP = document.getElementById('debugInfo');
 
     scale = window.innerWidth / settings["width"] * .9;
     c.width = settings["width"] * scale;
@@ -57,7 +63,7 @@ function init() {
 }
 
 function update() {
-
+    debugP.innerHTML = `Mouse Positon: {X: ${parseInt(mp.x / scale)}, Y: ${parseInt(mp.y / scale)}} <br> Current Set: ${currentSet} Next Set: ${nextSet} <br> Lerp Number: ${Math.round(lerpNum * 100) / 100} Speed: ${settings["speed"]}`;
 
     Field.draw();
 
@@ -91,5 +97,5 @@ function resizeCanvas() {
 }
 
 function mouseMoved(e) {
-
+    mp = { x: e.clientX, y: e.clientY };
 }
