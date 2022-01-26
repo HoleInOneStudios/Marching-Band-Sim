@@ -31,11 +31,18 @@ let ieArea;
 let sObj;
 let sSet;
 
+let play = '<img alt="Play" src="./rsc/play_arrow_black_24dp.svg" />';
+let pause = '<img alt="Pause" src="./rsc/pause_black_24dp.svg" />';
+let playPause;
+
 function init() {
     c = document.getElementById('mainCanvas');
     ctx = c.getContext("2d");
 
     ieArea = document.getElementById('ieArea');
+
+    playPause = document.getElementById('playpause');
+    playPause.innerHTML = pause;
 
     scale = window.innerWidth / settings["width"] * .9;
     c.width = settings["width"] * scale;
