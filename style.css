@@ -25,11 +25,12 @@ canvas {
   display: flex;
   flex-direction: column;
 
-  width: 75vw;
+  width: 100%;
 }
 
 #ieArea {
   height: 10vh;
+  width: 100%;
   overflow: scroll;
   white-space: nowrap;
 }
@@ -38,4 +39,5 @@ canvas {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: stretch;
 }
