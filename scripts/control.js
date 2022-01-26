@@ -15,11 +15,13 @@ function buttImport() {
 function GoToNextSet() {
     currentSet = nextSet;
     nextSet = (currentSet + 1) % maxSet;
+    lerpNum = 0;
 }
 
 function GoToPreviousSet() {
-    currentSet = maxSet - (currentSet + nextSet);
+    currentSet = nextSet + 1 % maxSet;
     nextSet = (currentSet + 1) % maxSet;
+    lerpNum = 0;
 }
 
 function toggleMove() {
@@ -39,13 +41,13 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
-function uploadJson(e){
+function uploadJson(e) {
     var fr = new FileReader();
 
     var files = e.target.files;
     fr.readAsText(files[0]);
 
-    fr.onload = function(){
+    fr.onload = function () {
         text = fr.result;
         //console.log(text);
 
@@ -55,4 +57,16 @@ function uploadJson(e){
         return text;
     }
 
+}
+
+function End() {
+    currentSet = maxSet;
+    nextSet = 1;
+    lerpNum = 0;
+}
+
+function Begin() {
+    currentSet = 0;
+    nextSet = 0;
+    lerpNum = 0;
 }
