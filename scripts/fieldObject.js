@@ -1,11 +1,13 @@
 class FieldObject {
-    position = {x: 0, y: 0}; //position of object
+    name = "no name";
+    position = { x: 0, y: 0 }; //position of object
     color = '#ff00ff' //rgb color of fill
     sets = ["S1-Y50-I0-H1-J0"]; //array of drill strings
 
-    constructor(sets = this.sets, color = this.color) {
-        this.sets.push(...sets);
+    constructor (sets = this.sets, color = this.color, name = this.name) {
+        this.sets = sets;
         this.color = color;
+        this.name = name;
 
         this.show = function () {
             ctx.fillStyle = this.color;

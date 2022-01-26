@@ -5,15 +5,15 @@
 function exportJson() {
     let json = {};
 
-    json["style"] = Field.style;
-    json["settings"] = settings;
+    json.style = Field.style;
+    json.settings = settings;
 
     let ex = [];
     stack.forEach(element => {
-        let temp = { "color": element.color, "sets": element.sets };
+        let temp = { name: element.name, color: element.color, sets: element.sets };
         ex.push(temp);
     });
-    json["objects"] = ex;
+    json.objects = ex;
 
 
     let newJson = JSON.stringify(json, null, '\t');
@@ -30,10 +30,10 @@ function importJson(J) {
     stack = [];
 
     result.objects.forEach(element => {
-        stack.push(new FieldObject(element["sets"], element["color"]))
+        stack.push(new FieldObject(element.sets, element.color, element.name))
     });
-    Object.assign(settings, result["settings"]);
-    Object.assign(Field.style, result["style"]);
+    Object.assign(settings, result.settings);
+    Object.assign(Field.style, result.style);
 
     //resizeCanvas();
 }
