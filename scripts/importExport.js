@@ -35,5 +35,5 @@ function importJson(J) {
     Object.assign(settings, result["settings"]);
     Object.assign(Field.style, result["style"]);
 
-    resizeCanvas();
+    //resizeCanvas();
 }

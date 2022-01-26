@@ -54,7 +54,7 @@ function init() {
     pathController = document.getElementById('pathController');
     pathController.checked = path;
 
-    scale = window.innerWidth / settings["width"] * .9;
+    scale = window.innerWidth / settings["width"] * .8;
     c.width = settings["width"] * scale;
     c.height = settings["height"] * scale;
 

@@ -1,13 +1,3 @@
-
-
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [TODO](#todo)
-- [Values](#values)
-  - [Settings](#settings)
-  - [Field Object](#field-object)
-
 # TODO
 
 - [ ] Editing
