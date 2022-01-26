@@ -36,6 +36,7 @@ let pause = '<img alt="Pause" src="./rsc/pause_black_24dp.svg" />';
 let playPause;
 
 let debugP;
+let pathController;
 
 let mp = { x: 0, y: 0 };
 
@@ -49,6 +50,9 @@ function init() {
     playPause.innerHTML = pause;
 
     debugP = document.getElementById('debugInfo');
+
+    pathController = document.getElementById('pathController');
+    pathController.checked = path;
 
     scale = window.innerWidth / settings["width"] * .9;
     c.width = settings["width"] * scale;
@@ -64,6 +68,8 @@ function init() {
 
 function update() {
     debugP.innerHTML = `Mouse Positon: {X: ${parseInt(mp.x / scale)}, Y: ${parseInt(mp.y / scale)}} <br> Current Set: ${currentSet} Next Set: ${nextSet} <br> Lerp Number: ${Math.round(lerpNum * 100) / 100} Speed: ${settings["speed"]}`;
+
+    path = pathController.checked;
 
     Field.draw();
 
