@@ -19,8 +19,8 @@ function GoToNextSet() {
 }
 
 function GoToPreviousSet() {
-    currentSet = nextSet + 1 % maxSet;
-    nextSet = (currentSet + 1) % maxSet;
+    nextSet = currentSet;
+    currentSet = (maxSet - 1 + nextSet) % maxSet;
     lerpNum = 0;
 }
 
@@ -67,7 +67,7 @@ function uploadJson(e) {
 
 function End() {
     currentSet = maxSet;
-    nextSet = 1;
+    nextSet = maxSet;
     lerpNum = 0;
 }
 
