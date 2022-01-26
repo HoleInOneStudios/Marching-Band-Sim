@@ -7,6 +7,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: baseline;
+
+  cursor: default;
+
+  font-family: "Courier New", Courier, monospace;
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 2.5vw;
 }
 
 canvas {
@@ -16,9 +24,18 @@ canvas {
 #importExport {
   display: flex;
   flex-direction: column;
+
+  width: 75vw;
+}
+
+#ieArea {
+  height: 10vh;
+  overflow: scroll;
+  white-space: nowrap;
 }
 
 .buttCon {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
