@@ -26,6 +26,12 @@ function GoToPreviousSet() {
 
 function toggleMove() {
     move = !move;
+    if (move) {
+        playPause.innerHTML = pause;
+    }
+    else {
+        playPause.innerHTML = play;
+    }
 }
 
 function download(filename, text) {
