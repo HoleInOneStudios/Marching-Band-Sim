@@ -31,7 +31,7 @@ let ieArea;
 let sObj;
 let sSet;
 
-function init(){
+function init() {
     c = document.getElementById('mainCanvas');
     ctx = c.getContext("2d");
 
@@ -45,12 +45,12 @@ function init(){
     c.addEventListener('mousemove', mouseMoved);
 
     stack.push(new FieldObject(["S1-Y45-I0-H1-J0", "S1-Y50-I0-H2-J0", "S2-Y35-I0-H1-J0", "S1-Y45-I0-H1-J0"], '#0000ff'));
-    
+
     setInterval(update, 1);
 }
 
-function update(){
-    
+function update() {
+
 
     Field.draw();
 
@@ -77,12 +77,12 @@ function update(){
 }
 
 // Events
-function resizeCanvas(){
+function resizeCanvas() {
     scale = window.innerWidth / settings["width"] * .9;
     c.width = settings["width"] * scale;
     c.height = settings["height"] * scale;
 }
 
-function mouseMoved(e){
-    
+function mouseMoved(e) {
+
 }

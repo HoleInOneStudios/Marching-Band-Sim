@@ -20,22 +20,37 @@
     <script src="scripts/app.js"></script>
   </head>
   <body onload="init()">
-    <div>
+    <main>
       <canvas id="mainCanvas"> </canvas>
-    </div>
-    <div>
-      <button id="previous" onclick="GoToPreviousSet()">Previous</button>
-      <button id="playpause" onclick="toggleMove()">Play/Pause</button>
-      <button id="next" onclick="GoToNextSet()">Next</button>
-    </div>
-    <div>
-      <textarea id="ieArea">[]</textarea>
-      <button id="import" onclick="buttImport()">Import</button>
-      <button id="export" onclick="buttExport()">Export</button>
-      <button id="download" onclick="download('drill', exportJson())">
-        Download
+    </main>
+    <div id="controls" class="buttCon">
+      <button id="begin" onclick="Begin()">
+        <img alt="Begin" src="./rsc/skip_previous_black_24dp.svg" />
       </button>
-      <input type="file" id="upload" oninput="uploadJson(event)"">
+      <button id="previous" onclick="GoToPreviousSet()">
+        <img alt="Previous" src="./rsc/fast_rewind_black_24dp.svg" />
+      </button>
+      <button id="playpause" onclick="toggleMove()">
+        <img alt="Play" src="./rsc/play_arrow_black_24dp.svg" />
+        <img alt="Pause" src="/rsc/pause_black_24dp.svg" />
+      </button>
+      <button id="next" onclick="GoToNextSet()">
+        <img alt="Next" src="./rsc/fast_forward_black_24dp.svg" />
+      </button>
+      <button id="end" onclick="End()">
+        <img alt="End" src="./rsc/skip_next_black_24dp.svg" />
+      </button>
+    </div>
+    <div id="importExport">
+      <textarea id="ieArea">[]</textarea>
+      <div class="buttCon">
+        <button id="import" onclick="buttImport()">Import</button>
+        <button id="export" onclick="buttExport()">Export</button>
+        <button id="download" onclick="download('drill', exportJson())">
+          <img alt="Download" src="./rsc/file_download_black_24dp.svg" />
+        </button>
+        <input type="file" id="upload" oninput="uploadJson(event)" />
+      </div>
     </div>
   </body>
 </html>
