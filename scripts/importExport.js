@@ -2,7 +2,7 @@
  * Converts the stack to a dictionary and returns the JSON of the dictionary
  * @returns {string} Json data of each object's color and sets in the current stack
  */
-function exportJson() {
+function ExportJSON() {
     let json = {};
 
     json.style = Field.style;
@@ -25,7 +25,7 @@ function exportJson() {
  * Converts the inputed string to the stack to be viewed on the player
  * @param {string} J - String of Json to be imported into the stack
  */
-function importJson(J) {
+function ImportJSON(J) {
     let result = JSON.parse(J);
     stack = [];
 

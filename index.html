@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- Script Tags -->
+    <script src="scripts/stack.js"></script>
     <script src="scripts/importExport.js"></script>
     <script src="scripts/control.js"></script>
     <script src="scripts/converter.js"></script>
@@ -24,22 +25,11 @@
       <canvas id="mainCanvas"> </canvas>
     </main>
     <div id="controls" class="buttCon">
-      <button id="begin" onclick="Begin()">
-        <img alt="Begin" src="./rsc/skip_previous_black_24dp.svg" />
-      </button>
-      <button id="previous" onclick="GoToPreviousSet()">
-        <img alt="Previous" src="./rsc/fast_rewind_black_24dp.svg" />
-      </button>
-      <button id="playpause" onclick="toggleMove()">
-        <img alt="Play" src="./rsc/play_arrow_black_24dp.svg" />
-        <img alt="Pause" src="./rsc/pause_black_24dp.svg" />
-      </button>
-      <button id="next" onclick="GoToNextSet()">
-        <img alt="Next" src="./rsc/fast_forward_black_24dp.svg" />
-      </button>
-      <button id="end" onclick="End()">
-        <img alt="End" src="./rsc/skip_next_black_24dp.svg" />
-      </button>
+      <button id="begin" onclick="Begin()">Begin</button>
+      <button id="previous" onclick="PreviousSet()">Previous</button>
+      <button id="playpause" onclick="ToggleMove()">Play</button>
+      <button id="next" onclick="NextSet()">Next</button>
+      <button id="end" onclick="End()">End</button>
     </div>
     <div id="info">
       <p id="debugInfo"></p>
@@ -49,12 +39,12 @@
     <div id="importExport">
       <textarea id="ieArea">[]</textarea>
       <div class="buttCon">
-        <button id="import" onclick="buttImport()">Import</button>
-        <button id="export" onclick="buttExport()">Export</button>
-        <button id="download" onclick="download('drill', exportJson())">
-          <img alt="Download" src="./rsc/file_download_black_24dp.svg" />
+        <button id="import" onclick="Import()">Import</button>
+        <button id="export" onclick="Export()">Export</button>
+        <button id="download" onclick="download('drill', ExportJSON())">
+          Download
         </button>
-        <input type="file" id="upload" oninput="uploadJson(event)" />
+        <input type="file" id="upload" oninput="upload(event)" />
       </div>
     </div>
   </body>
