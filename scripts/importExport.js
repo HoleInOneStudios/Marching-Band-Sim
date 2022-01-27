@@ -2,14 +2,14 @@
  * Converts the stack to a dictionary and returns the JSON of the dictionary
  * @returns {string} Json data of each object's color and sets in the current stack
  */
-function exportJson() {
+function ExportJSON() {
     let json = {};
 
     json.style = Field.style;
     json.settings = settings;
 
     let ex = [];
-    stack.forEach(element => {
+    Stack.objs.forEach(element => {
         let temp = { name: element.name, color: element.color, sets: element.sets };
         ex.push(temp);
     });
@@ -25,12 +25,12 @@ function exportJson() {
  * Converts the inputed string to the stack to be viewed on the player
  * @param {string} J - String of Json to be imported into the stack
  */
-function importJson(J) {
+function ImportJSON(J) {
     let result = JSON.parse(J);
-    stack = [];
+    Stack.objs = [];
 
     result.objects.forEach(element => {
-        stack.push(new FieldObject(element.sets, element.color, element.name))
+        Stack.objs.push(new FieldObject(element.sets, element.color, element.name))
     });
     Object.assign(settings, result.settings);
     Object.assign(Field.style, result.style);
