@@ -42,5 +42,25 @@ class FieldObject {
             ctx.lineWidth = 1;
         }
 
+        this.addSet = function (s = "S1-Y50-I0-H1-J0") {
+            if (this.sets.length < currentSet) {
+                this.sets.splice(this.sets.length - 1, 0, s);
+            }
+            else {
+                this.sets.splice(currentSet, 0, s);
+            }
+
+        }
+
+        this.removeSet = function () {
+            if (this.sets.length < currentSet) {
+                this.sets.pop();
+            }
+            else {
+                this.sets.splice(currentSet, 1);
+            }
+
+        }
+
     }
 }

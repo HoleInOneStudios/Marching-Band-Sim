@@ -9,7 +9,7 @@ function ExportJSON() {
     json.settings = settings;
 
     let ex = [];
-    stack.forEach(element => {
+    Stack.objs.forEach(element => {
         let temp = { name: element.name, color: element.color, sets: element.sets };
         ex.push(temp);
     });
@@ -27,10 +27,10 @@ function ExportJSON() {
  */
 function ImportJSON(J) {
     let result = JSON.parse(J);
-    stack = [];
+    Stack.objs = [];
 
     result.objects.forEach(element => {
-        stack.push(new FieldObject(element.sets, element.color, element.name))
+        Stack.objs.push(new FieldObject(element.sets, element.color, element.name))
     });
     Object.assign(settings, result.settings);
     Object.assign(Field.style, result.style);
