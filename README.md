@@ -1,24 +1,3 @@
-# TODO
-
-- [ ] Editing
-  - [ ] Sets
-    - [ ] move
-    - [ ] add
-    - [ ] delete
-  - [ ] Objects
-    - [ ] move
-    - [ ] add
-    - [ ] delete
-- [ ] GUI
-  - [ ] Timeline
-  - [x] Import/Export
-  - [x] Viewer
-  - [x] Control
-  - [ ] Debug
-  - [ ] Settings
-  - [ ] Info
-  - [ ] Edit
-
 # Values
 
 ## Settings
