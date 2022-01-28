@@ -2,11 +2,13 @@ let Stack = {
     objs: [],
 
     update: function () {
+        maxSet = 0;
         this.objs.forEach(element => {
-            maxSet = 0;
             if (element.sets.length - 1 > maxSet) {
                 maxSet = element.sets.length - 1;
             } //check that the max set is the max set and if not set the max set to the new max set
+        });
+        this.objs.forEach(element => {
             element.update(); //update object positions
             if (path) { element.showPath(); } //draw path if path is true
             if (show) { element.show(); } // show if show is true
@@ -24,7 +26,7 @@ let Stack = {
         });
     },
 
-    removeSet: function () {
+    removeSet: function (s = currentSet) {
         this.objs.forEach(element => {
             element.removeSet(s);
         });

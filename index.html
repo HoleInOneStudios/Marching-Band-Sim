@@ -24,6 +24,7 @@
     <main>
       <canvas id="mainCanvas"> </canvas>
     </main>
+
     <div id="controls" class="buttCon">
       <button id="begin" onclick="Begin()">Begin</button>
       <button id="previous" onclick="PreviousSet()">Previous</button>
@@ -31,11 +32,13 @@
       <button id="next" onclick="NextSet()">Next</button>
       <button id="end" onclick="End()">End</button>
     </div>
+
     <div id="info">
       <p id="debugInfo"></p>
       <label for="pathController">Show Paths</label>
       <input type="checkbox" id="pathController" />
     </div>
+
     <div id="importExport">
       <textarea id="ieArea">[]</textarea>
       <div class="buttCon">
@@ -46,6 +49,12 @@
         </button>
         <input type="file" id="upload" oninput="upload(event)" />
       </div>
+    </div>
+
+    <div id="editiing">
+      <button onclick="Stack.addObj()">Add Obj</button>
+      <button onclick="Stack.addSet()">Add Set</button>
+      <button onclick="Stack.removeSet()">Remove Set</button>
     </div>
   </body>
 </html>

@@ -57,7 +57,7 @@ function update() {
 
     lerpNum = (lerpNum + settings.speed) % (1 + settings.speed); //Iterate step in animation
 
-    if (move) {
+    if (move && maxSet > 1) {
         if (lerpNum >= 1) {
             NextSet();
 
