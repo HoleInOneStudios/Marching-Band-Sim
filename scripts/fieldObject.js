@@ -2,7 +2,7 @@ class FieldObject {
     name = "no name";
     position = { x: 0, y: 0 }; //position of object
     color = '#ff00ff' //rgb color of fill
-    sets = ["S1-Y50-I0-H1-J0"]; //array of drill strings
+    sets = ["S1-Y50-I0-H1-J0", "S1-Y50-I0-H1-J0"]; //array of drill strings
 
     constructor (sets = this.sets, color = this.color, name = this.name) {
         this.sets = sets;
