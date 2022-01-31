@@ -31,6 +31,7 @@ let playPause; //play pause button element
 let debugP; //debug p element
 let pathController; //path checkbox
 let ieArea; //import export text area
+let sSlider;
 
 
 function init() {

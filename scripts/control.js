@@ -98,11 +98,13 @@ function assignElements() {
     debugP = document.getElementById('debugInfo'); //get debug p element
 
     pathController = document.getElementById('pathController'); //get path controller checkbox element
+
+    sSlider = document.getElementById('speedSlider'); //get speed slider element
 }
 
 //UPDATE ELEMENTS
 function updateElements() {
-    debugP.innerHTML = `Mouse Positon: {X: ${parseInt(mp.x)}, Y: ${parseInt(mp.y)}} <br> Current Set: ${currentSet} Next Set: ${nextSet} <br> Lerp Number: ${Math.round(lerpNum * 100) / 100} Speed: ${settings.speed}`; //set debug text
+    debugP.innerHTML = `Mouse Positon: {X: ${parseInt(mp.x)}, Y: ${parseInt(mp.y)}} <br> Current Set: ${currentSet} Next Set: ${nextSet} <br> Lerp Number: ${Math.round(lerpNum * 100) / 100} <br> Speed: ${settings.speed}`; //set debug text
 
 }
 
@@ -110,5 +112,5 @@ function updateElements() {
 //INPUT ELEMENTS
 function updateInputs() {
     path = pathController.checked; //updates path with input
-
+    settings.speed = parseFloat(sSlider.value); //updates speed with input
 }
