@@ -25,7 +25,7 @@
       <canvas id="mainCanvas"> </canvas>
     </main>
 
-    <div id="controls" class="buttCon">
+    <div id="controls">
       <button id="begin" onclick="Begin()">Begin</button>
       <button id="previous" onclick="PreviousSet()">Previous</button>
       <button id="playpause" onclick="ToggleMove()">Play</button>
@@ -35,8 +35,12 @@
 
     <div id="info">
       <p id="debugInfo"></p>
+
       <label for="pathController">Show Paths</label>
       <input type="checkbox" id="pathController" />
+
+      <label for="speedSlide">Speed Control:</label>
+      <input type="range" id="speedSlider" min=".001" max=".1" step=".001" />
     </div>
 
     <div id="importExport">
