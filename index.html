@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Meta Tags -->
     <meta charset="UTF-8" />
@@ -19,6 +19,9 @@
     <script src="scripts/fieldObject.js"></script>
     <script src="scripts/field.js"></script>
     <script src="scripts/app.js"></script>
+
+    <!-- Head -->
+    <title>MBS - Web</title>
   </head>
   <body onload="init()">
     <canvas id="mainCanvas"> </canvas>
@@ -35,10 +38,15 @@
       <p id="debugInfo"></p>
 
       <label for="pathController">Show Paths</label>
-      <input type="checkbox" id="pathController" />
+      <input
+        title="checkbox for path visibility"
+        type="checkbox"
+        id="pathController"
+      />
 
       <label for="speedSlide">Speed Control:</label>
       <input
+        title="speed slider"
         type="range"
         id="speedSlider"
         min=".001"
@@ -49,14 +57,19 @@
     </div>
 
     <div id="importExport">
-      <textarea id="ieArea">[]</textarea>
+      <textarea title="text area for import export" id="ieArea">[]</textarea>
       <div class="buttCon">
         <button id="import" onclick="Import()">Import</button>
         <button id="export" onclick="Export()">Export</button>
         <button id="download" onclick="download('drill', ExportJSON())">
           Download
         </button>
-        <input type="file" id="upload" oninput="upload(event)" />
+        <input
+          title="file import"
+          type="file"
+          id="upload"
+          oninput="upload(event)"
+        />
       </div>
     </div>
 
