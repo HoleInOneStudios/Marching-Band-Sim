@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"args": [
+				"--verbose"
+			],
+			"problemMatcher": [],
+			"label": "Live Preview: Run Server"
+		},
+		{
+			"type": "Live Preview",
+			"args": [],
+			"problemMatcher": [],
+			"label": "Live Preview: Stop Server"
+		}
+	]
+}
