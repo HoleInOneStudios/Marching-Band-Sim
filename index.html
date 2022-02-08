@@ -1,91 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8" />
-    <meta name="keywords" content="Marching band, drill" />
-    <meta name="description" content="Marching Band Drill Creator and Viewer" />
-    <meta name="author" content="Benjamin Bowles" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<!-- Meta Tags -->
+		<meta charset="UTF-8" />
+		<meta name="keywords" content="Marching band, drill" />
+		<meta name="description" content="Marching Band Drill Creator and Viewer" />
+		<meta name="author" content="Benjamin Bowles" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Link Tags -->
-    <link rel="stylesheet" href="style.css" />
+		<!-- Link Tags -->
+		<link rel="stylesheet" href="style.css" />
 
-    <!-- Script Tags -->
-    <script src="scripts/stack.js"></script>
-    <script src="scripts/importExport.js"></script>
-    <script src="scripts/control.js"></script>
-    <script src="scripts/converter.js"></script>
-    <script src="scripts/fieldObject.js"></script>
-    <script src="scripts/field.js"></script>
-    <script src="scripts/app.js"></script>
+		<!-- Script Tags -->
+		<script src="scripts/stack.js"></script>
+		<script src="scripts/importExport.js"></script>
+		<script src="scripts/control.js"></script>
+		<script src="scripts/converter.js"></script>
+		<script src="scripts/fieldObject.js"></script>
+		<script src="scripts/field.js"></script>
+		<script src="scripts/app.js"></script>
 
-    <!-- Head -->
-    <title>MBS - Web</title>
-  </head>
-  <body onload="init()">
-    <canvas id="mainCanvas"> </canvas>
+		<!-- Head -->
+		<title>MBS - Web</title>
+	</head>
+	<body onload="init()">
+		<canvas id="mainCanvas"> </canvas>
 
-    <div id="controls">
-      <button id="begin" onclick="Begin()">Begin</button>
-      <button id="previous" onclick="PreviousSet()">Previous</button>
-      <button id="playpause" onclick="ToggleMove()">Play</button>
-      <button id="next" onclick="NextSet()">Next</button>
-      <button id="end" onclick="End()">End</button>
-    </div>
+		<div id="controls">
+			<button id="begin" onclick="Begin()">Begin</button>
+			<button id="previous" onclick="PreviousSet()">Previous</button>
+			<button id="playpause" onclick="ToggleMove()">Play</button>
+			<button id="next" onclick="NextSet()">Next</button>
+			<button id="end" onclick="End()">End</button>
+		</div>
 
-    <div id="info">
-      <p id="debugInfo"></p>
+		<div id="info">
+			<p id="debugInfo"></p>
 
-      <label for="pathController">Show Paths</label>
-      <input
-        title="checkbox for path visibility"
-        type="checkbox"
-        id="pathController"
-      />
+			<label for="pathController">Show Paths</label>
+			<input
+				title="checkbox for path visibility"
+				type="checkbox"
+				id="pathController"
+			/>
 
-      <label for="speedSlide">Speed Control:</label>
-      <input
-        title="speed slider"
-        type="range"
-        id="speedSlider"
-        min=".001"
-        max=".1"
-        step=".001"
-        value=".050"
-      />
-    </div>
+			<label for="speedSlide">Speed Control:</label>
+			<input
+				title="speed slider"
+				type="range"
+				id="speedSlider"
+				min=".001"
+				max=".1"
+				step=".001"
+				value=".050"
+			/>
+		</div>
 
-    <div id="importExport">
-      <textarea title="text area for import export" id="ieArea">[]</textarea>
-      <div class="buttCon">
-        <button id="import" onclick="Import()">Import</button>
-        <button id="export" onclick="Export()">Export</button>
-        <button id="download" onclick="download('drill', ExportJSON())">
-          Download
-        </button>
-        <input
-          title="file import"
-          type="file"
-          id="upload"
-          oninput="upload(event)"
-        />
-      </div>
-    </div>
+		<div id="importExport">
+			<textarea title="text area for import export" id="ieArea">[]</textarea>
+			<div class="buttCon">
+				<button id="import" onclick="Import()">Import</button>
+				<button id="export" onclick="Export()">Export</button>
+				<button id="download" onclick="download('drill', ExportJSON())">
+					Download
+				</button>
+				<input
+					title="file import"
+					type="file"
+					id="upload"
+					oninput="upload(event)"
+				/>
+			</div>
+		</div>
 
-    <div id="editiing">
-      <button onclick="Stack.addObj()">Add Obj</button>
-      <button onclick="Stack.addSet()">Add Set</button>
-      <button onclick="Stack.removeSet()">Remove Set</button>
-    </div>
+		<div id="editiing">
+			<button onclick="Stack.addObj()">Add Obj</button>
+			<button onclick="Stack.addSet()">Add Set</button>
+			<button onclick="Stack.removeSet()">Remove Set</button>
+		</div>
 
-    <div id="links">
-      <a href="https://github.com/HoleInOneStudios/MBS-Web">
-        <img alt="github" src="./rsc/GitHub-Mark-120px-plus.png" />
-      </a>
-      <a href="https://www.holeinonestudios.org">
-        <img alt="website" src="./rsc/Logo.png" />
-      </a>
-    </div>
-  </body>
+		<div id="links">
+			<a href="https://github.com/HoleInOneStudios/MBS-Web">
+				<img alt="github" src="./rsc/GitHub-Mark-120px-plus.png" />
+			</a>
+			<a href="https://www.holeinonestudios.org">
+				<img alt="website" src="./rsc/Logo.png" />
+			</a>
+		</div>
+	</body>
 </html>

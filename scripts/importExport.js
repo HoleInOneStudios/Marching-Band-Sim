@@ -3,22 +3,22 @@
  * @returns {string} Json data of each object's color and sets in the current stack
  */
 function ExportJSON() {
-    let json = {};
+	let json = {};
 
-    json.style = Field.style;
-    json.settings = settings;
+	json.style = Field.style;
+	json.settings = settings;
 
-    let ex = [];
-    Stack.objs.forEach(element => {
-        let temp = { name: element.name, color: element.color, sets: element.sets };
-        ex.push(temp);
-    });
-    json.objects = ex;
+	let ex = [];
+	Stack.objs.forEach(element => {
+		let temp = { name: element.name, color: element.color, sets: element.sets };
+		ex.push(temp);
+	});
+	json.objects = ex;
 
 
-    let newJson = JSON.stringify(json, null, '\t');
+	let newJson = JSON.stringify(json, null, '\t');
 
-    return newJson;
+	return newJson;
 }
 
 /**
@@ -26,14 +26,14 @@ function ExportJSON() {
  * @param {string} J - String of Json to be imported into the stack
  */
 function ImportJSON(J) {
-    let result = JSON.parse(J);
-    Stack.objs = [];
+	let result = JSON.parse(J);
+	Stack.objs = [];
 
-    result.objects.forEach(element => {
-        Stack.objs.push(new FieldObject(element.sets, element.color, element.name))
-    });
-    Object.assign(settings, result.settings);
-    Object.assign(Field.style, result.style);
+	result.objects.forEach(element => {
+		Stack.objs.push(new FieldObject(element.sets, element.color, element.name))
+	});
+	Object.assign(settings, result.settings);
+	Object.assign(Field.style, result.style);
 
-    //resizeCanvas();
+	//resizeCanvas();
 }

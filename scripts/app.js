@@ -5,10 +5,10 @@ let c;
 let ctx;
 
 let settings = {
-    width: 300 / 3, //width of field
-    height: 160 / 3, //height of field
-    hash_distance: 60 / 3, //hash distance on field
-    speed: .01 //speed of simulation
+	width: 300 / 3, //width of field
+	height: 160 / 3, //height of field
+	hash_distance: 60 / 3, //hash distance on field
+	speed: .01 //speed of simulation
 }
 let scale = 3; //scale of field
 
@@ -35,36 +35,36 @@ let sSlider; //speed control slider
 
 
 function init() {
-    assignElements();
-    updateInputs();
-    updateElements();
+	assignElements();
+	updateInputs();
+	updateElements();
 
-    resizeCanvas();
+	resizeCanvas();
 
-    window.addEventListener('resize', resizeCanvas); //event listener for resizing
-    c.addEventListener('mousemove', mouseMoved); //event listener for mouse movement
+	window.addEventListener('resize', resizeCanvas); //event listener for resizing
+	c.addEventListener('mousemove', mouseMoved); //event listener for mouse movement
 
-    Stack.objs.push(new FieldObject(["S1-Y45-I0-H1-J0", "S1-Y50-I0-H2-J0", "S2-Y35-I0-H1-J0", "S1-Y45-I0-H1-J0"], '#0000ff', "blue_Guy")); // default test object
+	Stack.objs.push(new FieldObject(["S1-Y45-I0-H1-J0", "S1-Y50-I0-H2-J0", "S2-Y35-I0-H1-J0", "S1-Y45-I0-H1-J0"], '#0000ff', "blue_Guy")); // default test object
 
-    setInterval(update, 1); //animation loop
+	setInterval(update, 1); //animation loop
 }
 
 function update() {
-    Field.draw(); // draw the field
-    updateElements();
-    updateInputs();
+	Field.draw(); // draw the field
+	updateElements();
+	updateInputs();
 
-    Stack.update();
+	Stack.update();
 
-    lerpNum = (lerpNum + settings.speed) % (1 + settings.speed); //Iterate step in animation
+	lerpNum = (lerpNum + settings.speed) % (1 + settings.speed); //Iterate step in animation
 
-    if (move && maxSet > 1) {
-        if (lerpNum >= 1) {
-            NextSet();
+	if (move && maxSet > 1) {
+		if (lerpNum >= 1) {
+			NextSet();
 
-        } //interate set when lerp is above 1
-    }
-    else {
-        lerpNum = 0;
-    } //if move is true and lerpNum is above 1 go to next set else set lerpnum to 0
+		} //interate set when lerp is above 1
+	}
+	else {
+		lerpNum = 0;
+	} //if move is true and lerpNum is above 1 go to next set else set lerpnum to 0
 }
