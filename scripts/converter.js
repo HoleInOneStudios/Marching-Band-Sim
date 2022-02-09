@@ -29,9 +29,7 @@ function drillToCoords(d = "S1-Y50-I0-H1-J0") {
 	return { x: X * scale, y: Y * scale }; //Return scaled vector of x and y
 }
 
-/*
-TODO coords to Drill
-*/
+/* TODO coords to Drill conversion */
 function coordsToDrill(c = { x: 0, y: 0 }) {
 	let s, y, i, h, j;
 

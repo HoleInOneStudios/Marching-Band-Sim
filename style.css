@@ -1,5 +1,13 @@
 /* Importing fonts and icons */
 
+
+/* variables */
+
+:root {
+  --background-color: hsl(0, 0%, 69%);
+  --text-color: hsl(0, 0%, 0%);
+}
+
 /* Main Styles */
 
 body {
@@ -9,6 +17,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 div {
@@ -33,7 +44,7 @@ canvas {
   bottom: 5%;
   right: 0%;
 
-  background-color: gray; /* TODO */
+  background-color: gray; /* TODO  add theme customization*/
   width: 2rem;
   padding: 0.3rem;
 
@@ -42,7 +53,7 @@ canvas {
 }
 
 #links > a > img {
-  color: whitesmoke; /* TODO */
+  color: whitesmoke; /* TODO add theme customization */
   height: auto;
   width: 100%;
 }
