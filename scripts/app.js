@@ -62,9 +62,9 @@ function update() {
 		if (lerpNum >= 1) {
 			NextSet();
 
-		} //interate set when lerp is above 1
+		} //iterate set when lerp is above 1
 	}
 	else {
 		lerpNum = 0;
-	} //if move is true and lerpNum is above 1 go to next set else set lerpnum to 0
+	} //if move is true and lerpNum is above 1 go to next set else set lerp number to 0
 }
