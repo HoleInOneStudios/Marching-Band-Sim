@@ -33,7 +33,7 @@ canvas {
   bottom: 5%;
   right: 0%;
 
-  background-color: gray; /* TODO */
+  background-color: gray; /* TODO  add theme customization*/
   width: 2rem;
   padding: 0.3rem;
 
@@ -42,7 +42,7 @@ canvas {
 }
 
 #links > a > img {
-  color: whitesmoke; /* TODO */
+  color: whitesmoke; /* TODO add theme customization */
   height: auto;
   width: 100%;
 }
