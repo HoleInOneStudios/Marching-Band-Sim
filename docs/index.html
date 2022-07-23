@@ -27,19 +27,42 @@
 			<canvas id="canvas">
 				<p>Your browser does not support the HTML5 canvas tag.</p>
 			</canvas>
-			<div id="fieldControls" class="controls">
-				<h3>Field Controls</h3>
-				<div>
-					<label for="bgColor">Background: </label>
-					<input title="background color" type="color" id="bgColor" value="#009900">
-					<label for="lnColor">Line: </label>
-					<input title="line color" type="color" id="lnColor" value="#ffffff">
-					<label for="lnWidth">Line Size:</label>
-					<input title="line width" type="range" id="lnWidth" min="5" max="15" value="10">
+			<div id="controls">
+				<div id="fieldControls" class="controls">
+					<h3>Field Controls</h3>
+					<div>
+						<label for="bgColor">Background: </label>
+						<input title="background color" type="color" id="bgColor" value="#009900">
+						<label for="lnColor">Line: </label>
+						<input title="line color" type="color" id="lnColor" value="#ffffff">
+						<label for="lnWidth">Line Size:</label>
+						<input title="line width" type="range" id="lnWidth" min="5" max="15" value="10">
+					</div>
 				</div>
-			</div>
-			<div id="objControls">
+				<div id="fieldInfo" class="controls">
+					<h3>Field Info</h3>
+					<div>
+						<label for="mouseX">X: </label>
+						<span title="mouse x" id="mouseX">0</span>
+						<label for="mouseY">Y: </label>
+						<span title="mouse y" id="mouseY">0</span>
+					</div>
+				</div>
+				<div id="objControls" class="controls">
+					<h3>Object Controls</h3>
+					<div>
+						<label for="objSelect">Selected Object:</label>
+						<select title="select object" id="objSelect">
 
+						</select>
+					</div>
+				</div>
+				<div id="simControls" class="controls">
+					<h3>Simulation Controls</h3>
+					<div>
+
+					</div>
+				</div>
 			</div>
 		</main>
 	</body>

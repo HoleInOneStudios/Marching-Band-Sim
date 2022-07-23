@@ -12,6 +12,16 @@ canvas {
 .controls {
   border: solid;
   
-  width: min-content;
+  width: max-content;
   padding: .5em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-bottom: .5em;
+}
+
+#controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
 }

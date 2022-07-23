@@ -1,10 +1,13 @@
 class Field {
-    constructor (id, width, height, hashDistance, lnWidth, lnColor, bgColor, controlId, bgColorControlId, lnControlControlId, lnWidthControlId) {
+    constructor (id, width, height, hashDistance, lnWidth, lnColor, bgColor, controlId, bgColorControlId, lnControlControlId, lnWidthControlId, mouseXId, mouseYId) {
         this.id = id;
         this.controlId = controlId;
         this.bgColorControlId = bgColorControlId;
         this.lnColorControlId = lnControlControlId;
         this.lnWidthControlId = lnWidthControlId;
+
+        this.mouseXId = mouseXId;
+        this.mouseYId = mouseYId;
 
         this.width = width;
         this.height = height;
@@ -27,6 +30,8 @@ class Field {
         this.bgColorControl = document.getElementById(this.bgColorControlId);
         this.lnColorControl = document.getElementById(this.lnColorControlId);
         this.lnWidthControl = document.getElementById(this.lnWidthControlId);
+        this.mouseXDis = document.getElementById(this.mouseXId);
+        this.mouseYDis = document.getElementById(this.mouseYId);
 
         this.bgColorControl.onchange = () => {
             this.bgColor = this.bgColorControl.value;
@@ -36,7 +41,12 @@ class Field {
         };
         this.lnWidthControl.onchange = () => {
             this.lnWidth = this.lnWidthControl.value;
-        }
+        };
+        this.canvas.addEventListener('mousemove', (event) => {
+            var rect = canvas.getBoundingClientRect();
+            this.mouseX = parseInt((event.clientX - rect.left) / this.getScale());
+            this.mouseY = parseInt((event.clientY - rect.top) / this.getScale());
+        });
 
         this.resize();
         this.setup();
@@ -98,6 +108,11 @@ class Field {
             this.ctx.stroke();
             this.ctx.setLineDash([])
         }
+    }
+
+    update() {
+        this.mouseXDis.innerText = this.mouseX;
+        this.mouseYDis.innerText = this.mouseY;
     }
 }
 
