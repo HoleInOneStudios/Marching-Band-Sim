@@ -42,15 +42,15 @@ class Objects {
 
     async update() {
         this.time++;
-        if (this.time >= this.interval) {
+        if (this.time > this.interval) {
             this.count++;
             this.time = 0;
             //console.log("frame");
-            if (this.count >= this.maxCount) {
+            if (this.count > this.maxCount) {
                 this.currentSet++;
                 this.count = 0;
                 //console.log("count");
-                if (this.currentSet >= this.maxSet) {
+                if (this.currentSet > this.maxSet) {
                     this.currentSet = 0;
                     //console.log("set");
                 }
