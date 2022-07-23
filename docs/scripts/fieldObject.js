@@ -1,14 +1,17 @@
+import { lerp, lerp2 } from "./Math.js";
+
 class FieldObject {
     constructor () {
+        this.sets = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
+        this.pos = { x: 0, y: 0 };
+    }
+
+    async show(ctx) {
         
     }
 
-    async show() {
-
-    }
-
-    async update(set, count) {
-
+    async update(prevSet, set, count, maxCount) {
+        this.pos = lerp2(this.sets[prevSet], this.sets[set], count/maxCount);
     }
 }
 
@@ -57,7 +60,7 @@ class Objects {
             }
         }
         this.List.forEach(element => {
-            element.update(this.set, this.count);
+            element.update(this.set ,this.set+1, this.count, this.maxCount);
         });
     }
 }
