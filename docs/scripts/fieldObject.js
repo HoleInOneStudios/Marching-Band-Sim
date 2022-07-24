@@ -19,7 +19,7 @@ class FieldObject {
 }
 
 class Objects {
-    constructor (maxCount, interval, nextSetDis, currentSetDis, previousSetDis, countDis) {
+    constructor (maxCount, minInterval, maxInterval, nextSetDis, currentSetDis, previousSetDis, countDis, intervalControl) {
         this.List = [];
         this.selected = this.List[0];
 
@@ -28,12 +28,19 @@ class Objects {
         this.previousSetDis = document.getElementById(previousSetDis);
         this.countDis = document.getElementById(countDis);
 
+        this.minInterval = minInterval;
+        this.maxInterval = maxInterval;
+        this.intervalControl = document.getElementById(intervalControl);
+        this.intervalControl.min = minInterval;
+        this.intervalControl.max = maxInterval;
+
         this.maxSet = 0;
         this.count = 0;
         this.maxCount = maxCount || 4;
 
         this.time = 0;
-        this.interval = interval || 10;
+        this.interval = lerp(this.minInterval, this.maxInterval, .5) || 10;
+        this.intervalControl.value = this.interval;
         this.move = true;
 
         this.currentSet = 0;
@@ -63,11 +70,12 @@ class Objects {
     }
 
     async update() {
+        this.interval = this.intervalControl.value;
         if (this.move) {
             this.time++;
             if (this.time >= this.interval) {
                 this.count++;
-                console.log(this.count / this.maxCount);
+                //console.log(this.count / this.maxCount);
                 this.time = 0;
                 //console.log("frame");
                 if (this.count >= this.maxCount) {
