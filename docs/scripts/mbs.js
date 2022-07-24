@@ -8,7 +8,7 @@ let objs;
 document.body.onload = async () => {
     field = new Field("canvas", 300 / 3, 160 / 3, 60 / 3, 10, "white", "green", "fieldControls", "bgColor", "lnColor", "lnWidth", "mouseX", "mouseY");
 
-    objs = new Objects();
+    objs = new Objects(4, 20, "nextSet", "currentSet", "prevSet", "count");
     objs.add(new FieldObject());
 
     addEventListener('resize', () => {
@@ -20,7 +20,7 @@ document.body.onload = async () => {
         field.update();
 
         objs.update();
-        objs.show();
+        objs.show(field);
 
     }, 1000 / 60);
 }
