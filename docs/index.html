@@ -48,7 +48,7 @@
 						<span title="mouse y" id="mouseY">0</span>
 					</div>
 				</div>
-				<div id="objControls" class="controls">
+				<!-- <div id="objControls" class="controls">
 					<h3>Object Controls</h3>
 					<div>
 						<label for="objSelect">Selected Object:</label>
@@ -56,7 +56,7 @@
 
 						</select>
 					</div>
-				</div>
+				</div> -->
 				<div id="simInfo" class="controls">
 					<h3>Simulation Info</h3>
 					<div>
@@ -68,13 +68,21 @@
 						<span title="next set" id="nextSet">0</span>
 						<label for="currentSet">Count:</label>
 						<span title="count" id="count">0</span>
+						<label for="interval">Interval:</label>
+						<span title="interval" id="interval">0</span>
 					</div>
 				</div>
 				<div id="simControls" class="controls">
 					<h3>Simulation Controls</h3>
 					<div>
-						<label for="intervalControl">Speed:</label>
+						<label for="intervalControl">Interval:</label>
 						<input title="simulation speed" type="range" id="intervalControl" min="1" max="10" value="1">
+						<label for="countControl">Count:</label>
+						<input title="simulation count" type="range" id="countControl"></input>
+						<label for="move">Move:</label>
+						<input title="reset" type="checkbox" id="move" checked="true"></input>
+						<label for="path">Paths:</label>
+						<input title="reset" type="checkbox" id="path"></input>
 					</div>
 				</div>
 			</div>
