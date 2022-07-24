@@ -10,6 +10,7 @@ document.body.onload = async () => {
 
     objs = new Objects(10, 20, "nextSet", "currentSet", "prevSet", "count");
     objs.add(new FieldObject());
+    objs.add(new FieldObject([{ x: 65, y: 10 }]));
 
     addEventListener('resize', () => {
         field.resize();

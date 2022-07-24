@@ -12,7 +12,9 @@ class FieldObject {
     }
 
     async update(objects) {
-        this.pos = lerp2(this.sets[objects.currentSet], this.sets[objects.nextSet], objects.count/objects.maxCount);
+        if (objects.nextSet < this.sets.length && objects.currentSet < this.sets.length) {
+            this.pos = lerp2(this.sets[objects.currentSet], this.sets[objects.nextSet], objects.count / objects.maxCount);
+        }
     }
 }
 
