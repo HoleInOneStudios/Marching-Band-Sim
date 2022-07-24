@@ -1,16 +1,18 @@
 import { lerp, lerp2 } from "./Math.js";
 
 class FieldObject {
-    constructor () {
-        this.sets = [{ x: 10, y: 10 }, { x: 100, y: 100 }, { x: 10, y: 10 }];
+    constructor (sets) {
+        this.sets = sets || [{ x: 10, y: 10 }, { x: 50, y: 30 }, { x: 65, y: 10 }];
         this.pos = { x: 0, y: 0 };
     }
 
     async show(field) {
+        field.ctx.fillStyle = "red";
+        field.ctx.fillRect(this.pos.x * field.getScale(), this.pos.y * field.getScale(), 1 * field.getScale(), 1 * field.getScale());
     }
 
     async update(objects) {
-        
+        this.pos = lerp2(this.sets[objects.currentSet], this.sets[objects.nextSet], objects.count/objects.maxCount);
     }
 }
 
@@ -18,10 +20,6 @@ class Objects {
     constructor (maxCount, interval, nextSetDis, currentSetDis, previousSetDis, countDis) {
         this.List = [];
         this.selected = this.List[0];
-
-        this.nextSet = 0;
-        this.currentSet = 0;
-        this.previousSet = 0;
 
         this.nextSetDis = document.getElementById(nextSetDis);
         this.currentSetDis = document.getElementById(currentSetDis);
@@ -34,6 +32,18 @@ class Objects {
 
         this.time = 0;
         this.interval = interval || 10;
+        this.move = true;
+
+        this.currentSet = 0;
+        this.nextSet = (this.currentSet + 1) % this.maxSet || this.currentSet;
+        this.previousSet = (this.currentSet - 1) % this.maxSet || this.currentSet;
+
+        this.List.forEach(element => {
+            if (element.sets.length - 1 > this.maxSet) {
+                this.maxSet = element.sets.length;
+            }
+        });
+        
     }
 
     add(obj) {
@@ -51,20 +61,23 @@ class Objects {
     }
 
     async update() {
-        this.time++;
-        if (this.time >= this.interval) {
-            this.count++;
-            this.time = 0;
-            //console.log("frame");
-            if (this.count >= this.maxCount) {
-                this.currentSet++;
-                this.nextSet = (this.currentSet + 1) % this.maxSet;
-                this.previousSet = (this.currentSet - 1) % this.maxSet;
-                this.count = 0;
-                //console.log("count");
-                if (this.currentSet >= this.maxSet) {
-                    this.currentSet = 0;
-                    //console.log("set");
+        if (this.move) {
+            this.time++;
+            if (this.time >= this.interval) {
+                this.count++;
+                console.log(this.count / this.maxCount);
+                this.time = 0;
+                //console.log("frame");
+                if (this.count >= this.maxCount) {
+                    this.currentSet++;
+                    this.nextSet = (this.currentSet + 1) % this.maxSet;
+                    this.previousSet = (this.currentSet - 1) % this.maxSet;
+                    this.count = 0;
+                    //console.log("count");
+                    if (this.currentSet >= this.maxSet) {
+                        this.currentSet = 0;
+                        //console.log("set");
+                    }
                 }
             }
         }
