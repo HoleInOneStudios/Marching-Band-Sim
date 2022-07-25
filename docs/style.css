@@ -30,3 +30,10 @@ canvas {
   flex-wrap: wrap;
   justify-content: start;
 }
+
+a {
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 2em;
+}
