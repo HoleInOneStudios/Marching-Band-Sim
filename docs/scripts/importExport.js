@@ -1,4 +1,4 @@
-import { FieldObject } from "./FieldObject.js";
+import { FieldObject } from "./fieldObject.js";
 
 class ImportExport {
     constructor (objs, field, imButton, exButton,
