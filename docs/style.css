@@ -1,63 +1,50 @@
-/* Importing fonts and icons */
-
-
-/* variables */
-
-:root {
-  --background-color: hsl(0, 0%, 69%);
-  --text-color: hsl(0, 0%, 0%);
+@font-face {
+  font-family: 'Clanderone';
+  src: url('./fonts/Clarendon-Light.otf');
 }
 
-/* Main Styles */
-
-body {
-  width: max-content;
-  margin: auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background-color: var(--background-color);
-  color: var(--text-color);
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-div {
-  padding: 0.3rem;
+h1 {
+  font-size: 2em;
+}
+
+h3 {
 }
 
 canvas {
-  border: solid rgb(0, 0, 0) 5px;
+  border: solid #000;
+  margin: 0 auto;
 }
 
-#ieArea {
-  width: 100%;
-  height: auto;
+.controls > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
-#links {
+.controls {
+  border: solid;
+  
+  width: max-content;
+  padding: .5em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-bottom: .5em;
+}
+
+#controls {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  position: fixed;
-  bottom: 5%;
-  right: 0%;
-
-  background-color: gray; /* TODO  add theme customization*/
-  width: 2rem;
-  padding: 0.3rem;
-
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
-#links > a > img {
-  color: whitesmoke; /* TODO add theme customization */
-  height: auto;
-  width: 100%;
-}
-
-#links > a > img:hover {
-  filter: opacity(70%);
+a {
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 2em;
 }

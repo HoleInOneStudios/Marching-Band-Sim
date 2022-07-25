@@ -1,70 +1,119 @@
-const Field = {
-	style: {
-		bg: '#008700',
-		ln: '#ffffff',
-		ydln10w: 1,
-		ydln5w: .5,
-		hlnw: 3,
-		fontSize: 5
-	},
+class Field {
+    constructor (id, width, height, hashDistance, lnWidth, lnColor, bgColor, controlId, bgColorControlId, lnControlControlId, lnWidthControlId, mouseXId, mouseYId) {
+        this.id = id;
+        this.controlId = controlId;
+        this.bgColorControlId = bgColorControlId;
+        this.lnColorControlId = lnControlControlId;
+        this.lnWidthControlId = lnWidthControlId;
 
-	draw: function () {
-		//draw grass
-		ctx.fillStyle = this.style.bg;
-		ctx.fillRect(0, 0, settings.width * scale, settings.height * scale);
+        this.mouseXId = mouseXId;
+        this.mouseYId = mouseYId;
 
-		//drawing parts
-		ctx.strokeStyle = this.style.ln;
-		ctx.font = this.style.fontSize * scale + "px serif";
-		for (let i = 5; i < 100; i += 5) {
-			switch (Math.abs(i % 10)) {
-				case 0:
-					//text drawing
-					if (i <= 50) {
-						ctx.strokeText(Math.abs(i), (i / 10 * settings.width / 10 - this.style.fontSize / 2) * scale, (settings.height - this.style.fontSize) * scale);
-						ctx.strokeText(Math.abs(i), (i / 10 * settings.width / 10 - this.style.fontSize / 2) * scale, (this.style.fontSize * 1.5) * scale);
-					}
-					else {
-						ctx.strokeText(100 - i, (i / 10 * settings.width / 10 - this.style.fontSize / 2) * scale, (settings.height - this.style.fontSize) * scale);
-						ctx.strokeText(100 - i, (i / 10 * settings.width / 10 - this.style.fontSize / 2) * scale, (this.style.fontSize * 1.5) * scale);
-					}
-					ctx.lineWidth = this.style.ydln10w * scale;
-					break;
+        this.width = width;
+        this.height = height;
+        this.hashDistance = hashDistance;
+        
+        this.lnWidth = lnWidth;
+        this.lnColor = lnColor;
+        this.bgColor = bgColor;
 
-				case 5:
-					ctx.lineWidth = this.style.ydln5w * scale;
-					break;
+        this.firstSetup();
 
-				default:
-					break;
-			}
-			//yd line drawing
-			ctx.beginPath();
+        this.draw();
+    }
 
-			ctx.moveTo(i * scale, 0);
-			ctx.lineTo(i * scale, settings.height * scale);
+    firstSetup() {
+        this.canvas = document.getElementById(this.id);
+        this.ctx = this.canvas.getContext("2d");
 
-			ctx.stroke();
-		}
+        this.fieldControls = document.getElementById(this.controlId);
+        this.bgColorControl = document.getElementById(this.bgColorControlId);
+        this.lnColorControl = document.getElementById(this.lnColorControlId);
+        this.lnWidthControl = document.getElementById(this.lnWidthControlId);
+        this.mouseXDis = document.getElementById(this.mouseXId);
+        this.mouseYDis = document.getElementById(this.mouseYId);
 
-		//hash drawing
-		ctx.strokeStyle = this.style.hlnw;
-		ctx.setLineDash([10]);
+        this.bgColorControl.onchange = () => {
+            this.bgColor = this.bgColorControl.value;
+        };
+        this.lnColorControl.onchange = () => {
+            this.lnColor = this.lnColorControl.value;
+        };
+        this.lnWidthControl.onchange = () => {
+            this.lnWidth = this.lnWidthControl.value;
+        };
+        this.canvas.addEventListener('mousemove', (event) => {
+            var rect = canvas.getBoundingClientRect();
+            this.mouseX = parseInt((event.clientX - rect.left) / this.getScale());
+            this.mouseY = parseInt((event.clientY - rect.top) / this.getScale());
+        });
 
-		ctx.beginPath();
-		ctx.moveTo(0, (settings.height - settings.hash_distance) * scale);
-		ctx.lineTo(settings.width * scale, (settings.height - settings.hash_distance) * scale);
-		ctx.stroke();
+        this.resize();
+        this.setup();
+    }
 
-		ctx.beginPath();
-		ctx.moveTo(0, settings.hash_distance * scale);
-		ctx.lineTo(settings.width * scale, settings.hash_distance * scale);
-		ctx.stroke();
+    setup() {
+        this.canvas.style.backgroundColor = this.bgColor;
+        this.ctx.lineWidth = this.lnWidth / this.getScale();
+        this.ctx.strokeStyle = this.lnColor;
+        this.ctx.fillStyle = this.lnColor;
+        this.ctx.font = "bold " + this.lnWidth / 2 * this.getScale() + "px Clanderone";
+        this.ctx.textAlign = "center";
+        this.ctx.textBaseline = "middle";
+    }
 
-		//Reset for other drawing
-		ctx.setLineDash([0]);
-		ctx.strokeStyle = 'black';
-		ctx.lineWidth = 1;
-		ctx.fillStyle = 'white';
-	}
+    getScale() {
+        return this.canvas.parentElement.clientWidth / this.width * .9;
+    }
+
+    resize() {
+        this.canvas.width = this.width * this.getScale();
+        this.canvas.height = this.height * this.getScale();
+    }
+
+    draw() {
+        this.setup();
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        //draw yardlines and numbers
+        for (let x = 10; x < 100; x += 10) {
+            //lines
+            this.ctx.beginPath();
+            this.ctx.moveTo(x * this.getScale(), 0);
+            this.ctx.lineTo(x * this.getScale(), this.height * this.getScale());
+            this.ctx.stroke();
+
+            //numbers
+            if (x <= 50) {
+                this.ctx.fillText(x, x * this.getScale(), this.height / 4 * this.getScale());
+                this.ctx.fillText(x, x * this.getScale(), this.height * 3 / 4 * this.getScale());
+            }
+            else
+            {
+                this.ctx.fillText(100 - x, x * this.getScale(), this.height / 4 * this.getScale());
+                this.ctx.fillText(100 - x, x * this.getScale(), this.height * 3 / 4 * this.getScale());
+            }
+            
+            //Hashes
+            this.ctx.setLineDash([10]);
+            this.ctx.beginPath();
+            //Top
+            this.ctx.moveTo(0, this.hashDistance * this.getScale());
+            this.ctx.lineTo(this.width * this.getScale(), this.hashDistance * this.getScale());
+
+            //Bottom
+            this.ctx.moveTo(0, (this.height - this.hashDistance) * this.getScale());
+            this.ctx.lineTo(this.width * this.getScale(), (this.height - this.hashDistance) * this.getScale());
+
+            this.ctx.stroke();
+            this.ctx.setLineDash([])
+        }
+    }
+
+    update() {
+        this.mouseXDis.innerText = this.mouseX;
+        this.mouseYDis.innerText = this.mouseY;
+    }
 }
+
+export { Field };
