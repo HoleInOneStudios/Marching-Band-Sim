@@ -57,7 +57,7 @@ class Field {
         this.ctx.lineWidth = this.lnWidth / this.getScale();
         this.ctx.strokeStyle = this.lnColor;
         this.ctx.fillStyle = this.lnColor;
-        this.ctx.font = "bold " + this.lnWidth / 2 * this.getScale() + "px Arial";
+        this.ctx.font = "bold " + this.lnWidth / 2 * this.getScale() + "px Clanderone";
         this.ctx.textAlign = "center";
         this.ctx.textBaseline = "middle";
     }

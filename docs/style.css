@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Clanderone';
+  src: url('./Clarendon-Light.otf');
+}
+
 canvas {
   border: solid #000;
   margin: 0 auto;
