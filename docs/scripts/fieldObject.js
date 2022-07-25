@@ -30,6 +30,10 @@ class FieldObject {
         field.ctx.stroke();
         
     }
+
+    toJson() {
+        return {name: this.name, sets: this.sets};
+    }
 }
 
 class Objects {
@@ -166,6 +170,17 @@ class Objects {
         this.previousSetDis.innerText = this.previousSet;
         this.countDis.innerText = `${this.currentCount}/${this.Count}`;
         this.intervalDis.innerText = `${this.time}/${this.interval}`;
+    } 
+
+    toJson() {
+        let json = {};
+        json.List = [];
+        this.List.forEach(element => {
+            json.List.push(element.toJson());
+        }
+        );
+        console.log(json);
+        return json;
     }
 }
 

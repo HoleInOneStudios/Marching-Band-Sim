@@ -1,8 +1,10 @@
 import { Field } from "./Field.js";
 import { FieldObject, Objects } from "./FieldObject.js";
+import { ImportExport } from "./importExport.js";
 
 let field;
 let fieldObj;
+let imex;
 let objs;
 
 document.body.onload = async () => {
@@ -11,6 +13,8 @@ document.body.onload = async () => {
     objs = new Objects(4, 20, 0, 20, "nextSet", "currentSet", "prevSet", "count", "interval", "intervalControl", "countControl", "move", "path", "objSelect", "addObj", "removeObj");
     objs.add(new FieldObject());
     objs.add(new FieldObject([{ x: 65, y: 10 }, { x: 100, y: 20 }], "A"));
+
+    imex = new ImportExport(objs, field, "import", "export", "importFile", "exportText", "download");
 
     addEventListener('resize', () => {
         field.resize();
