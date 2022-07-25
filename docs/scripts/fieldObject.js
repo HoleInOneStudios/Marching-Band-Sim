@@ -1,7 +1,8 @@
 import { lerp, lerp2 } from "./Math.js";
 
 class FieldObject {
-    constructor (sets) {
+    constructor (sets, name) {
+        this.name = name || "noname";
         this.sets = sets || [{ x: 10, y: 10 }, { x: 50, y: 30 }, { x: 65, y: 10 }];
         this.pos = { x: 0, y: 0 };
     }
@@ -32,7 +33,7 @@ class FieldObject {
 }
 
 class Objects {
-    constructor (minCountControl, maxCountControl, minInterval, maxInterval, nextSetDis, currentSetDis, previousSetDis, countDis, intervalDis, intervalControl, countControl, moveCon, pathCon) {
+    constructor (minCountControl, maxCountControl, minInterval, maxInterval, nextSetDis, currentSetDis, previousSetDis, countDis, intervalDis, intervalControl, countControl, moveCon, pathCon, objDropdown, objAdd, objRemove) {
         this.List = [];
         this.selected = this.List[0];
 
@@ -76,14 +77,38 @@ class Objects {
         this.path = this.moveCon.checked;
 
         //Object Select
+        this.objDropdown = document.getElementById(objDropdown);
+        this.updateDropdown();
+
+        //Object add and remove
+        this.objAdd = document.getElementById(objAdd);
+        this.objRemove = document.getElementById(objRemove);
+
+        this.objAdd.onclick = async () => {
+            this.add(new FieldObject());
+        }
+
+        this.objRemove.onclick = async () => {
+            this.remove(this.selected);
+        }
+    }
+
+    updateDropdown() {
+        this.objDropdown.innerHTML = "";
+        this.List.forEach(element => {
+            this.objDropdown.innerHTML += `<option value="${element.name}">${element.name}</option>`;
+        }
+        );
     }
 
     add(obj) {
-        return this.List.push(obj);
+        this.List.push(obj);
+        this.updateDropdown();
     }
 
     remove(obj) {
-        return this.List.splice(this.List.indexOf(obj), 1);
+        this.List.splice(this.List.indexOf(obj), 1);
+        this.updateDropdown();
     }
 
     async show(field) {
@@ -101,6 +126,10 @@ class Objects {
         this.Count = this.countControl.value
         this.move = this.moveCon.checked;
         this.path = this.pathCon.checked;
+        //this.updateDropdown();
+
+        //set selected
+        this.selected = this.List.find(element => element.name == this.objDropdown.value);
 
         //Update Loop
         if (this.move) {
