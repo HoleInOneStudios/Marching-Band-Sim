@@ -1,6 +1,7 @@
 {
     "name": "Marching Band Simulator - WEB EDITION",
     "short_name": "MBS - Web",
+    "start_url": ".",
     "icons": [
         {
             "src": "./image/android-chrome-192x192.png",
