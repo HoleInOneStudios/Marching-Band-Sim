@@ -1,5 +1,5 @@
-import { Field } from "./Field.js";
-import { FieldObject, Objects } from "./FieldObject.js";
+import { Field } from "./field.js";
+import { FieldObject, Objects } from "./fieldObject.js";
 import { ImportExport } from "./importExport.js";
 
 let field;
