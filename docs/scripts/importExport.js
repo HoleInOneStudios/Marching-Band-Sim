@@ -33,6 +33,8 @@ class ImportExport {
     async import(J) {
         this.objs.List = [];
         let data = JSON.parse(J);
+        this.objs.countControl.value = data.Count;
+        this.objs.interval = data.interval;
         data.List.forEach(element => {
             this.objs.add(new FieldObject(element.sets, element.name));
         });
@@ -54,7 +56,7 @@ class ImportExport {
     }
 
     async upload(e) {
-        console.log(e.target.files);
+        //console.log(e.target.files);
 
         var reader = new FileReader();
 

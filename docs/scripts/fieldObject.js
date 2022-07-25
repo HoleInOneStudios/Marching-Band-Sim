@@ -173,13 +173,12 @@ class Objects {
     } 
 
     toJson() {
-        let json = {};
-        json.List = [];
+        let json = { List: [], Count: this.Count, Interval: this.interval };
         this.List.forEach(element => {
             json.List.push(element.toJson());
         }
         );
-        console.log(json);
+        //console.log(json);
         return json;
     }
 }
