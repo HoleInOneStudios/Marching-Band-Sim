@@ -1,6 +1,17 @@
 @font-face {
   font-family: 'Clanderone';
-  src: url('./Clarendon-Light.otf');
+  src: url('./fonts/Clarendon-Light.otf');
+}
+
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h3 {
 }
 
 canvas {
