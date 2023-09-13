@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marching Band Simulator - Web</title>
+
+    <meta name="author" content="Benjamin Bowles">
+    <meta name="description" content="a web application for designing marching band shows">
+    <meta name="keywords" content="marching band, marching band simulator, holeinonestudios, benjamin bowles">
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
+
+    <script defer type="module">
+        import { Field } from "./script/Field.js";
+        import { Player } from "./script/Player.js";
+
+        console.log(Field.presets);
+
+        const field = new Field("fieldCanvas");
+        field.drawField();
+    </script>
+</head>
+<body>
+    <canvas id="fieldCanvas"></canvas>
+    
+</body>
+</html>
